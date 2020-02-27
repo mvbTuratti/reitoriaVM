@@ -575,7 +575,13 @@ def gradtable():
 @app.route('/atividades_academicas', methods=['POST', 'GET'])
 def atividades_academicas():
 	if 'login' in session:
-		paths = os.path.join(app.root_path, 'templates', 'child_ativ_acad.html')
+		html_name = "child_ativ_acad"
+		try:
+			html_name+= str(simplificador_nomes[str(session['login'])])
+		except:
+			html_name += str(session['login'])
+		html_name += ".html"
+		paths = os.path.join(app.root_path, 'templates', html_name)
 		city = Campi.query.filter_by(cidade=session['login'])[0]
 		data_atual = datetime.datetime.today()
 		if 'tabela' in session:
@@ -704,7 +710,7 @@ def atividades_academicas():
 								{%% endfor %%}
 								</select>
 							</td>
-							<td data-name="diaini%s">
+							<td data-name="diaini">
 								<select name="diaini%s">
 									<option value="%s" selected>%s</option>
 									{%% for dia in dias %%}
@@ -712,14 +718,14 @@ def atividades_academicas():
 									{%% endfor %%}
 								</select>
 							</td>
-							<td data-name="diafin%s">
+							<td data-name="diafin">
 								<select name="diafin%s">
 									<option value="%s" selected>%s</option>
 									{%% for dia in dias %%}
 										<option value= "{{ dia }}">{{ dia }}</option>
 									{%% endfor %%}
 								</select>
-							</td>"""%(i,i,i,str(evento.mes), month,i, i,evento.dia_inicio, evento.dia_inicio, i, i, evento.dia_final, evento.dia_final)
+							</td>"""%(i,i,i,str(evento.mes), month,i, evento.dia_inicio, evento.dia_inicio, i, evento.dia_final, evento.dia_final)
 					if evento.flag:
 						a = latex_to_html(pat=r'\\textbf{([\s\w_]+)}', sentence=evento.comentario)
 						b = latex_to_html(pat=r'\\underline{([\s\w_]+)}', sentence=a)
@@ -747,7 +753,8 @@ def atividades_academicas():
 						</tr>""" %(i)
 				string+= r"{% endblock %}"
 				w.write(string.encode('utf-8'))
-			return render_template('child_ativ_acad.html', boler=True, data = calendario, dias=range(1,32))
+			
+			return render_template(html_name, boler=True, data = calendario, dias=range(1,32))
 
 		else:
 			return redirect(url_for('controle'))
@@ -922,6 +929,7 @@ def dias():
 				nivel_curso = city.tecnico[0]
 			elif tab == 'calem':
 				nivel_curso = city.calem[0]
+				
 			try:
 				dias_letivos = sorted(nivel_curso.dias)
 			except:
@@ -956,7 +964,10 @@ def dias():
 								var_dic.update({'ano':data_atual.year})
 							
 								db.session.add(Letivos(**var_dic))
-							db.session.commit()
+								try:
+									db.session.commit()
+								except:
+									pass
 							return redirect(url_for('controle'))
 						except:
 							db.session.rollback()
@@ -974,17 +985,27 @@ def dias():
 @app.route('/valores', methods=['POST', 'GET'])
 def valores():
 	if 'login' in session:
-		paths = os.path.join(app.root_path, 'templates', 'child.html')
+		html_name = "child-"
+		try:
+			html_name+= str(simplificador_nomes[str(session['login'])])
+		except:
+			html_name += str(session['login'])
 		city = Campi.query.filter_by(cidade=session['login'])[0]
 		data_atual = datetime.datetime.today()
+
 		if 'tabela' in session:
+			
 			tab = session['tabela']
 			if tab == 'graduacao':
 				nivel_curso = city.graduacao[0]
+				html_name += "-graduacao.html"
 			elif tab == 'tecnico':
 				nivel_curso = city.tecnico[0]
+				html_name += "-tecnico.html"
 			elif tab == 'calem':
 				nivel_curso = city.calem[0]
+				html_name += "-calem.html"
+			paths = os.path.join(app.root_path, 'templates', html_name)
 
 			if request.method == 'POST':
 				if request.form.get('atualizarbdd'):
@@ -1136,7 +1157,7 @@ def valores():
 
 				string+= r"{% endblock %}"
 				w.write(string.encode('utf-8'))
-			return render_template('child.html', boler=True, data = calendario, dias=range(1, 32))	
+			return render_template(html_name, boler=True, data = calendario, dias=range(1, 32))	
 			
 		else:
 			return redirect(url_for('controle'))

@@ -1,0 +1,619 @@
+
+					{% extends "valores.html" %}
+					{% block content %}
+						<tr id='addr0' data-id="0" class="hidden" align="center">
+		                                  
+		                                <td data-name="name">
+		                                    <select name="name0">
+		                                        <option value="">Mês</option>
+		                                        {% for mes in data %}
+		                                            <option value= "{{ mes }}">{{ data[mes] }}</option>
+		                                        {% endfor %}
+		                                    </select>
+		                                </td>
+		                                <td data-name="dia">
+		                                    <select name="dia0">
+		                                        <option value="">Dia</option>
+		                                        {% for dia in dias %}
+		                                            <option value= "{{ dia }}">{{ dia }}</option>
+		                                        {% endfor %}
+		                                    </select>
+		                                </td>
+		                                <td data-name="desc">
+		                                    <textarea name="desc0" placeholder="Descrição" class="form-control" cols="25" maxlength="800"></textarea>
+		                                </td>                     
+		                                <td data-name="del">
+		                                    <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">&times;</span></button>
+		                                </td>
+
+	                    </tr>
+						<tr id='addr1' data-id="1" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name1">
+								<option value="3" selected>Março</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia1">
+								<option value="7" selected>7</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des1" value="\textbf{Início das Atividades Acadêmicas para os Calouros}" id="des1">
+								<b>Início das Atividades Acadêmicas para os Calouros</b>
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del1">
+							</td>
+						</tr>
+						<tr id='addr2' data-id="2" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name2">
+								<option value="3" selected>Março</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia2">
+								<option value="11" selected>11</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des2" value="\textbf{Início do semestre letivo}" id="des2">
+								<b>Início do semestre letivo</b>
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del2">
+							</td>
+						</tr>
+						<tr id='addr3' data-id="3" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name3">
+								<option value="3" selected>Março</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia3">
+								<option value="11" selected>11</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des3" value="Início do período para solicitação de \textbf{exame de suficiência} em disciplinas/unidades curriculares" id="des3">
+								Início do período para solicitação de <b>exame de suficiência</b> em disciplinas/unidades curriculares
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del3">
+							</td>
+						</tr>
+						<tr id='addr4' data-id="4" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name4">
+								<option value="3" selected>Março</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia4">
+								<option value="25" selected>25</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des4" value="Início do período para solicitação de \textbf{equivalência ou convalidação} de disciplinas/unidades curriculares" id="des4">
+								Início do período para solicitação de <b>equivalência ou convalidação</b> de disciplinas/unidades curriculares
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del4">
+							</td>
+						</tr>
+						<tr id='addr5' data-id="5" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name5">
+								<option value="4" selected>Abril</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia5">
+								<option value="18" selected>18</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des5" value="Data limite para solicitação de \textbf{exame de suficiência} em disciplina/unidade curriculares" id="des5">
+								Data limite para solicitação de <b>exame de suficiência</b> em disciplina/unidade curriculares
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del5">
+							</td>
+						</tr>
+						<tr id='addr6' data-id="6" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name6">
+								<option value="5" selected>Maio</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia6">
+								<option value="1" selected>1</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="desc">
+								<textarea name="desc6" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Dia da mentira</textarea>
+							</td>                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del6">
+							</td>
+						</tr>
+						<tr id='addr7' data-id="7" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name7">
+								<option value="5" selected>Maio</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia7">
+								<option value="11" selected>11</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des7" value="Data limite para \underline{publicação} da \textbf{primeira nota bimestral} e \underline{lançamento} no sistema acadêmico" id="des7">
+								Data limite para <u>publicação</u> da <b>primeira nota bimestral</b> e <u>lançamento</u> no sistema acadêmico
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del7">
+							</td>
+						</tr>
+						<tr id='addr8' data-id="8" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name8">
+								<option value="6" selected>Junho</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia8">
+								<option value="3" selected>3</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des8" value="Data limite para divulgação dos resultados do \textbf{exame de suficiência} em disciplinas/unidades curriculares" id="des8">
+								Data limite para divulgação dos resultados do <b>exame de suficiência</b> em disciplinas/unidades curriculares
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del8">
+							</td>
+						</tr>
+						<tr id='addr9' data-id="9" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name9">
+								<option value="7" selected>Julho</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia9">
+								<option value="18" selected>18</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des9" value="\textbf{Término do semestre letivo}" id="des9">
+								<b>Término do semestre letivo</b>
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del9">
+							</td>
+						</tr>
+						<tr id='addr10' data-id="10" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name10">
+								<option value="7" selected>Julho</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia10">
+								<option value="18" selected>18</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des10" value="Data limite para \underline{publicação} da \textbf{segunda nota bimestral} e \underline{lançamento} no sistema acadêmico" id="des10">
+								Data limite para <u>publicação</u> da <b>segunda nota bimestral</b> e <u>lançamento</u> no sistema acadêmico
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del10">
+							</td>
+						</tr>
+						<tr id='addr11' data-id="11" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name11">
+								<option value="7" selected>Julho</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia11">
+								<option value="19" selected>19</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des11" value="Data limite para o \underline{envio} dos \textbf{diários de classe} ao DERAC" id="des11">
+								Data limite para o <u>envio</u> dos <b>diários de classe</b> ao DERAC
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del11">
+							</td>
+						</tr>
+						<tr id='addr12' data-id="12" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name12">
+								<option value="8" selected>Agosto</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia12">
+								<option value="8" selected>8</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des12" value="\textbf{Início das Atividades Acadêmicas para os Calouros}" id="des12">
+								<b>Início das Atividades Acadêmicas para os Calouros</b>
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del12">
+							</td>
+						</tr>
+						<tr id='addr13' data-id="13" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name13">
+								<option value="8" selected>Agosto</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia13">
+								<option value="12" selected>12</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des13" value="\textbf{Início do semestre letivo}" id="des13">
+								<b>Início do semestre letivo</b>
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del13">
+							</td>
+						</tr>
+						<tr id='addr14' data-id="14" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name14">
+								<option value="8" selected>Agosto</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia14">
+								<option value="12" selected>12</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des14" value="Início do período para solicitação de \textbf{exame de suficiência} em disciplinas/unidades curriculares" id="des14">
+								Início do período para solicitação de <b>exame de suficiência</b> em disciplinas/unidades curriculares
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del14">
+							</td>
+						</tr>
+						<tr id='addr15' data-id="15" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name15">
+								<option value="8" selected>Agosto</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia15">
+								<option value="26" selected>26</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des15" value="Início do período para solicitação de \textbf{equivalência ou convalidação} de disciplinas/unidades curriculares" id="des15">
+								Início do período para solicitação de <b>equivalência ou convalidação</b> de disciplinas/unidades curriculares
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del15">
+							</td>
+						</tr>
+						<tr id='addr16' data-id="16" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name16">
+								<option value="9" selected>Setembro</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia16">
+								<option value="20" selected>20</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des16" value="Data limite para solicitação de \textbf{exame de suficiência} em disciplinas/unidades curriculares" id="des16">
+								Data limite para solicitação de <b>exame de suficiência</b> em disciplinas/unidades curriculares
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del16">
+							</td>
+						</tr>
+						<tr id='addr17' data-id="17" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name17">
+								<option value="10" selected>Outubro</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia17">
+								<option value="14" selected>14</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des17" value="Data limite para \underline{publicação} da \textbf{primeira nota bimestral} e \underline{lançamento} no sistema acadêmico" id="des17">
+								Data limite para <u>publicação</u> da <b>primeira nota bimestral</b> e <u>lançamento</u> no sistema acadêmico
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del17">
+							</td>
+						</tr>
+						<tr id='addr18' data-id="18" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name18">
+								<option value="11" selected>Novembro</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia18">
+								<option value="4" selected>4</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des18" value="Data limite para divulgação dos resultados do \textbf{exame de suficiência} em disciplinas/unidades curriculares" id="des18">
+								Data limite para divulgação dos resultados do <b>exame de suficiência</b> em disciplinas/unidades curriculares
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del18">
+							</td>
+						</tr>
+						<tr id='addr19' data-id="19" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name19">
+								<option value="12" selected>Dezembro</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia19">
+								<option value="19" selected>19</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des19" value="\textbf{Término do semestre letivo}" id="des19">
+								<b>Término do semestre letivo</b>
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del19">
+							</td>
+						</tr>
+						<tr id='addr20' data-id="20" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name20">
+								<option value="12" selected>Dezembro</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia20">
+								<option value="19" selected>19</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des20" value="Data limite para \underline{publicação} da \textbf{segunda nota bimestral} e \underline{lançamento} no sistema acadêmico" id="des20">
+								Data limite para <u>publicação</u> da <b>segunda nota bimestral</b> e <u>lançamento</u> no sistema acadêmico
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del20">
+							</td>
+						</tr>
+						<tr id='addr21' data-id="21" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name21">
+								<option value="12" selected>Dezembro</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia21">
+								<option value="20" selected>20</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="des">
+								<input type="hidden" name="des21" value="Data limite para o \underline{envio} dos \textbf{diários de classe} ao DERAC" id="des21">
+								Data limite para o <u>envio</u> dos <b>diários de classe</b> ao DERAC
+							</td>
+						                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del21">
+							</td>
+						</tr>
+						<tr id='addr22' data-id="22" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name22">
+								<option value="12" selected>Dezembro</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="dia">
+								<select name="dia22">
+								<option value="31" selected>31</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="desc">
+								<textarea name="desc22" placeholder="Descrição" class="form-control" cols="25" maxlength="800">semestreee</textarea>
+							</td>                     
+							<td data-name="del">
+								<input type="submit" class="btn btn-danger" value="x" name="del22">
+							</td>
+						</tr>{% endblock %}
