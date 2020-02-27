@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Formulário UTFPR</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <style type="text/css">
+         body {
+    background: #242323;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+}   
+        html {
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.table {
+    border: none;
+}
+
+.table-definition thead th:first-child {
+    pointer-events: none;
+    background: white;
+    border: none;
+
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.page-item > * {
+    border: none;
+}
+
+.custom-checkbox {
+  min-height: 1rem;
+  padding-left: 0;
+  margin-right: 0;
+  cursor: pointer; 
+}
+  .custom-checkbox .custom-control-indicator {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 10px;
+    background-color: #818181;
+    border-radius: 15px;
+    margin-right: 10px;
+    -webkit-transition: background .3s ease;
+    transition: background .3s ease;
+    vertical-align: middle;
+    margin: 0 16px;
+    box-shadow: none; 
+  }
+    .custom-checkbox .custom-control-indicator:after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-color: #242323;
+      border-radius: 21px;
+      box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+      left: -2px;
+      top: -4px;
+      -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+      transition: left .3s ease, background .3s ease, box-shadow .1s ease; 
+    }
+  .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+    background-color: #FFC400;
+    background-image: none;
+    box-shadow: none !important; 
+  }
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:after {
+      background-color: #FFC400;
+      left: 15px; 
+    }
+  .custom-checkbox .custom-control-input:focus ~ .custom-control-indicator {
+    box-shadow: none !important; 
+  }
+img {
+    max-width:100%;
+    height:auto;
+}
+/* botao */
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+/*--choice modal1--*/
+
+.openbtn{
+    margin-top:80px;
+}
+.modal-header {
+    padding: 15px;
+     border-bottom: none;
+}
+.modal-title{
+  font-weight:bold;
+}
+.modal-body.choice-modal{
+    position: relative;
+    padding: 0px;
+
+}
+
+.row.inner-scroll {
+    height: 445px;
+    overflow: auto;
+}
+
+.mycard-footer {
+    height: 25px;
+    background: #333333;
+    font-size: 15px;
+    text-indent: 10px;
+   /* border-radius: 0 0px 4px 4px;*/
+}
+
+.gallery-card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+      height: 132px;
+    margin-bottom:6px;
+}
+.gallery-card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    /*padding: 1.25rem;*/
+}
+.gallery-card img {
+    height: 100px;
+    width: 100%;
+}
+label{
+    margin-bottom: 0 !important;
+}
+
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form class="form-inline" method="POST">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="card">
+                  <div class="card-body p-0">
+                      <div class="row p-5">
+                          <div class="col-md-5">
+                              <img src="{{ url_for('static', filename='logo.png') }}" width="220" height="220">
+                          </div>
+                          <div class="col-md-4">
+                              <img src="{{ url_for('static', filename='diregea.png') }}" width="220" height="220">
+                          </div>
+                          <div class="col-md-3 text-right">
+                              <p class="font-weight-bold mb-1">{{ log }}</p>
+                              <p class="text-muted">{{ dia }}, {{ mes }}, {{ ano }}</p>
+
+                              <input type="submit" name="logout" value="Log out" class="btn btn-outline-danger btn-sm">
+                              
+                          </div>
+                      </div>
+
+                      <hr class="my-1">
+                      <div class="row p-5">
+                          <div class="col-md-12">
+                          <a href="http://www.utfpr.edu.br/alunos/calendario" target="_blank" class="btn btn-outline-dark float-right">Calendários Anteriores</a>
+                            {% if feriados %}
+                              <input type="submit" name="feriados" value="Feriados, Recesso e Férias" class="btn btn-warning">
+                            {% endif %}
+                            <input type="submit" name="atividades" value="Atividades e Eventos" class="btn btn-warning">
+                          </div>
+                      </div>
+                      <div class="row p-5">
+                          <div class="col-md-12">
+                              <table class="table table-bordered table-definition mb-6">
+  					            <thead class="table-warning " align="text-center">
+  					                <tr align="center">
+  					                    <th></th>
+  					                    <th>Formação</th>
+  					                    <th>Número de dias letivos</th>
+  					                    <th>Definir datas</th>
+  					                    <th>Tabelas Importantes</th>
+  					                </tr>
+  					            </thead>
+  					            <tbody>
+  					                <tr align="center">
+  					                    <td>
+  					                        <label class="custom-control custom-checkbox">
+  					                            <input type="checkbox" class="custom-control-input" name="input1">
+  					                            <span class="custom-control-indicator"></span>
+  					                        </label>
+  					                    </td>
+  					                    <td>Técnico Integrado</td>
+  					                    <td><input type="submit" name="diasletivos0" value="Visualizar" class="btn  btn-outline-warning">           
+                                </td>
+  					                    <td><input type="submit" name="definirdatas0" value="Visualizar" class="btn  btn-outline-warning"></td>
+  					                    <td><input type="submit" name="tabelasimportantes0" value="Visualizar" class="btn  btn-outline-warning"></td>
+  					                </tr>
+  					                <tr align="center">
+  					                    <td>
+  					                        <label class="custom-control custom-checkbox">
+  					                            <input type="checkbox" class="custom-control-input" name="input2">
+  					                            <span class="custom-control-indicator"></span>
+  					                        </label>
+  					                    </td>
+  					                    <td>Graduação</td>
+                                <td><input type="submit" name="diasletivos1" value="Visualizar" class="btn  btn-outline-warning">           
+                                </td>
+                                <td><input type="submit" name="definirdatas1" value="Visualizar" class="btn  btn-outline-warning"></td>
+                                <td><input type="submit" name="tabelasimportantes1" value="Visualizar" class="btn  btn-outline-warning"></td>
+  					                </tr>
+  					                <tr align="center">
+  					                    <td>
+  					                        <label class="custom-control custom-checkbox">
+  					                            <input type="checkbox" class="custom-control-input" name="input3">
+  					                            <span class="custom-control-indicator"></span>
+  					                        </label>
+  					                    </td>
+  					                    <td>Calem</td>
+                                <td><input type="submit" name="diasletivos2" value="Visualizar" class="btn  btn-outline-warning">           
+                                </td>
+                                <td><input type="submit" name="definirdatas2" value="Visualizar" class="btn  btn-outline-warning"></td>
+                                <td><input type="submit" name="tabelasimportantes2" value="Visualizar" class="btn  btn-outline-warning"></td>
+  					                </tr>
+  					            </tbody>
+  					            <tfoot>
+  					                <tr>
+  					                    <th></th>
+                                
+  					                    <th colspan="4">
+  					                     
+                                    <input type="submit" name="submitpdf" value="Download PDF" class="btn btn-warning float-right">
+  					                    </th>
+  					                </tr>
+  					            </tfoot>
+  					        </table>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="text-light md-5 mb-5 text-center small"> </div>
+      <div class="text-light text-center small">desenvolvido por:</div>
+      <div class="text-light text-center small">turatti@alunos.utfpr.edu.br</div>
+      
+  </div>
+  <div class="modal fade" id="myModal2">
+    <div class="modal-dialog modal-lg">
+   
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Mensagem</h4>
+           <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+      
+          <div align="center">
+            <tbody>
+                <input type="text" name="mensagemCalem" required="True" value="{{ calemMsg }}" size="60">
+            </tbody>
+            <tfoot>
+              <tr>
+                  <th>
+                      <input type="submit" name="submitMsg" value="Atualizar" class="btn btn-warning">
+                  </th>
+              </tr>
+            </tfoot>
+          </div>
+          <h1> </h1>
+          <h1> </h1>
+          <h1> </h1>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

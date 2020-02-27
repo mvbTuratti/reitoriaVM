@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title> Dias</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <style type="text/css">
+        
+body{
+    background-color:#f2f2f2;
+}
+.table{
+    background-color:#fff;
+    box-shadow:0px 2px 2px #aaa;
+    margin-top:50px;
+}
+
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form class="form" method="POST">
+  <div class="container" >
+    <div class="row">
+      <table class="table table-bordered">
+      <thead align="centered">
+        <tr>
+          <th class="text-center">Mês</th>
+          <th class="text-center">Dias</th>
+          
+        </tr>
+      </thead>
+      <tbody align="centered">
+        {% for idx in quantidade %}
+          <tr>
+            <td class="text-center">
+              {{ idx }}
+            </td>
+            <td data-name="dia" class="text-center" >
+              <select name="dia{{ idx }}" required="True">
+                  <option value="{{ meses[idx] }}" selected>{{ meses[idx] }}</option>
+                  {% for dias in days %}
+                      <option value= "{{ dias }}">{{ dias }}</option>
+                  {% endfor %}
+              </select>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      <input type="submit" class="btn btn-dark float-right" value="Confirma" name="atualizarbdd">
+      <div class="col-md-12">
+        <h1> </h1>
+        <h3> </h3>
+    </div>
+    </div>
+  </div>
+</form>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

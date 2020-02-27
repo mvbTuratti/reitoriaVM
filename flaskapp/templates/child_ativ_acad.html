@@ -1,0 +1,37 @@
+
+						{% extends "atividades_academicas.html" %}
+						{% block content %}
+							<tr id='addr0' data-id="0" class="hidden" align="center">
+			                                  
+			                                <td data-name="name">
+			                                    <select name="name0">
+			                                        <option value="">Mês</option>
+			                                        {% for mes in data %}
+			                                            <option value= "{{ mes }}">{{ data[mes] }}</option>
+			                                        {% endfor %}
+			                                    </select>
+			                                </td>
+			                                <td data-name="diaini">
+												<select name="diaini0">
+													<option value="">Dia Inicial</option>
+													{% for dia in dias %}
+														<option value= "{{ dia }}">{{ dia }}</option>
+													{% endfor %}
+												</select>
+											</td>
+											<td data-name="diafin">
+												<select name="diafin0">
+													<option value="">Dia Final</option>
+													{% for dia in dias %}
+														<option value= "{{ dia }}">{{ dia }}</option>
+													{% endfor %}
+												</select>
+											</td>
+			                                <td data-name="desc">
+			                                    <textarea name="desc0" placeholder="Descrição" class="form-control" cols="25" maxlength="800"></textarea>
+			                                </td>                     
+			                                <td data-name="del">
+			                                    <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">&times;</span></button>
+			                                </td>
+
+		                    </tr>{% endblock %}

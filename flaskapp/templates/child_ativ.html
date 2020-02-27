@@ -1,0 +1,706 @@
+
+						{% extends "atividades.html" %}
+						{% block content %}
+							<tr id='addr0' data-id="0" class="hidden" align="center">
+			                                  
+			                                <td data-name="name">
+			                                    <select name="name0">
+			                                        <option value="">Mês</option>
+			                                        {% for mes in data %}
+			                                            <option value= "{{ mes }}">{{ data[mes] }}</option>
+			                                        {% endfor %}
+			                                    </select>
+			                                </td>
+			                                <td data-name="dia">
+			                                    <textarea name="dia0" placeholder="Dias" class="form-control" cols="7" maxlength="7"></textarea>
+			                                </td>
+			                                <td data-name="desc">
+			                                    <textarea name="desc0" placeholder="Descrição" class="form-control" cols="25" maxlength="800"></textarea>
+			                                </td>                     
+			                                <td data-name="del">
+			                                    <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">&times;</span></button>
+			                                </td>
+
+		                    </tr>
+							<tr id='addr1' data-id="1" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name1">
+									<option value="1" selected>Janeiro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia1" placeholder="Dias" class="form-control" cols="7" maxlength="7">01</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc1" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Confraternização Universal}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del1">
+								
+								</td>
+							</tr>
+							<tr id='addr2' data-id="2" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name2">
+									<option value="1" selected>Janeiro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia2" placeholder="Dias" class="form-control" cols="7" maxlength="7">02 a 31</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc2" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Férias Docentes</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del2">
+								
+								</td>
+							</tr>
+							<tr id='addr3' data-id="3" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name3">
+									<option value="1" selected>Janeiro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia3" placeholder="Dias" class="form-control" cols="7" maxlength="7">27</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc3" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso Local</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del3">
+								
+								</td>
+							</tr>
+							<tr id='addr4' data-id="4" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name4">
+									<option value="1" selected>Janeiro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia4" placeholder="Dias" class="form-control" cols="7" maxlength="7">28</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc4" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Aniversário de Apucarana</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del4">
+								
+								</td>
+							</tr>
+							<tr id='addr5' data-id="5" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name5">
+									<option value="2" selected>Fevereiro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia5" placeholder="Dias" class="form-control" cols="7" maxlength="7">10</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc5" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso Local</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del5">
+								
+								</td>
+							</tr>
+							<tr id='addr6' data-id="6" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name6">
+									<option value="2" selected>Fevereiro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia6" placeholder="Dias" class="form-control" cols="7" maxlength="7">11</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc6" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Padroeiro de Apucarana</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del6">
+								
+								</td>
+							</tr>
+							<tr id='addr7' data-id="7" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name7">
+									<option value="2" selected>Fevereiro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia7" placeholder="Dias" class="form-control" cols="7" maxlength="7">24 a 25</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc7" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Carnaval}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del7">
+								
+								</td>
+							</tr>
+							<tr id='addr8' data-id="8" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name8">
+									<option value="2" selected>Fevereiro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia8" placeholder="Dias" class="form-control" cols="7" maxlength="7">26</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc8" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso (Cinzas)</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del8">
+								
+								</td>
+							</tr>
+							<tr id='addr9' data-id="9" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name9">
+									<option value="4" selected>Abril</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia9" placeholder="Dias" class="form-control" cols="7" maxlength="7">10</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc9" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Paixão de Cristo}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del9">
+								
+								</td>
+							</tr>
+							<tr id='addr10' data-id="10" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name10">
+									<option value="4" selected>Abril</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia10" placeholder="Dias" class="form-control" cols="7" maxlength="7">11</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc10" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso (Sábado de Aleluia)</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del10">
+								
+								</td>
+							</tr>
+							<tr id='addr11' data-id="11" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name11">
+									<option value="4" selected>Abril</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia11" placeholder="Dias" class="form-control" cols="7" maxlength="7">12</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc11" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Páscoa}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del11">
+								
+								</td>
+							</tr>
+							<tr id='addr12' data-id="12" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name12">
+									<option value="4" selected>Abril</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia12" placeholder="Dias" class="form-control" cols="7" maxlength="7">20</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc12" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del12">
+								
+								</td>
+							</tr>
+							<tr id='addr13' data-id="13" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name13">
+									<option value="4" selected>Abril</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia13" placeholder="Dias" class="form-control" cols="7" maxlength="7">21</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc13" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Tiradentes}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del13">
+								
+								</td>
+							</tr>
+							<tr id='addr14' data-id="14" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name14">
+									<option value="5" selected>Maio</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia14" placeholder="Dias" class="form-control" cols="7" maxlength="7">01</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc14" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Dia Mundial do Trabalho}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del14">
+								
+								</td>
+							</tr>
+							<tr id='addr15' data-id="15" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name15">
+									<option value="5" selected>Maio</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia15" placeholder="Dias" class="form-control" cols="7" maxlength="7">02</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc15" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del15">
+								
+								</td>
+							</tr>
+							<tr id='addr16' data-id="16" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name16">
+									<option value="6" selected>Junho</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia16" placeholder="Dias" class="form-control" cols="7" maxlength="7">11</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc16" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{\textit{Corpus Christi}}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del16">
+								
+								</td>
+							</tr>
+							<tr id='addr17' data-id="17" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name17">
+									<option value="6" selected>Junho</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia17" placeholder="Dias" class="form-control" cols="7" maxlength="7">12 a 13</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc17" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del17">
+								
+								</td>
+							</tr>
+							<tr id='addr18' data-id="18" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name18">
+									<option value="7" selected>Julho</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia18" placeholder="Dias" class="form-control" cols="7" maxlength="7">14</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc18" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Término do primeiro semestre de 2020}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del18">
+								
+								</td>
+							</tr>
+							<tr id='addr19' data-id="19" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name19">
+									<option value="7" selected>Julho</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia19" placeholder="Dias" class="form-control" cols="7" maxlength="7">17 a 31</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc19" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Férias Docentes</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del19">
+								
+								</td>
+							</tr>
+							<tr id='addr20' data-id="20" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name20">
+									<option value="9" selected>Setembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia20" placeholder="Dias" class="form-control" cols="7" maxlength="7">07</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc20" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Independência do Brasil}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del20">
+								
+								</td>
+							</tr>
+							<tr id='addr21' data-id="21" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name21">
+									<option value="10" selected>Outubro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia21" placeholder="Dias" class="form-control" cols="7" maxlength="7">12</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc21" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Padroeira do Brasil}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del21">
+								
+								</td>
+							</tr>
+							<tr id='addr22' data-id="22" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name22">
+									<option value="10" selected>Outubro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia22" placeholder="Dias" class="form-control" cols="7" maxlength="7">28</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc22" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Dia do Servidor Público}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del22">
+								
+								</td>
+							</tr>
+							<tr id='addr23' data-id="23" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name23">
+									<option value="11" selected>Novembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia23" placeholder="Dias" class="form-control" cols="7" maxlength="7">02</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc23" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Finados}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del23">
+								
+								</td>
+							</tr>
+							<tr id='addr24' data-id="24" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name24">
+									<option value="11" selected>Novembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia24" placeholder="Dias" class="form-control" cols="7" maxlength="7">15</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc24" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Proclamação da República}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del24">
+								
+								</td>
+							</tr>
+							<tr id='addr25' data-id="25" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name25">
+									<option value="12" selected>Dezembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia25" placeholder="Dias" class="form-control" cols="7" maxlength="7">17</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc25" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Término do segundo semestre de 2020}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del25">
+								
+								</td>
+							</tr>
+							<tr id='addr26' data-id="26" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name26">
+									<option value="12" selected>Dezembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia26" placeholder="Dias" class="form-control" cols="7" maxlength="7">22 a 23</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc26" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso Acadêmico</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del26">
+								
+								</td>
+							</tr>
+							<tr id='addr27' data-id="27" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name27">
+									<option value="12" selected>Dezembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia27" placeholder="Dias" class="form-control" cols="7" maxlength="7">24</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc27" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del27">
+								
+								</td>
+							</tr>
+							<tr id='addr28' data-id="28" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name28">
+									<option value="12" selected>Dezembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia28" placeholder="Dias" class="form-control" cols="7" maxlength="7">25</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc28" placeholder="Descrição" class="form-control" cols="25" maxlength="800">\textbf{Natal}</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del28">
+								
+								</td>
+							</tr>
+							<tr id='addr29' data-id="29" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name29">
+									<option value="12" selected>Dezembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia29" placeholder="Dias" class="form-control" cols="7" maxlength="7">26</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc29" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del29">
+								
+								</td>
+							</tr>
+							<tr id='addr30' data-id="30" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name30">
+									<option value="12" selected>Dezembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia30" placeholder="Dias" class="form-control" cols="7" maxlength="7">28 a 30</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc30" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso Acadêmico</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del30">
+								
+								</td>
+							</tr>
+							<tr id='addr31' data-id="31" class="hidden" align="center">
+
+								<td data-name="name">
+									<select name="name31">
+									<option value="12" selected>Dezembro</option>
+									{% for mes in data %}
+										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{% endfor %}
+									</select>
+								</td>
+								<td data-name="dia">
+									<textarea name="dia31" placeholder="Dias" class="form-control" cols="7" maxlength="7">31</textarea>
+								</td>
+								<td data-name="desc">
+									<textarea name="desc31" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Recesso</textarea>
+								</td>	                     
+								<td data-name="del">
+								
+									<input type="submit" class="btn btn-danger" value="x" name="del31">
+								
+								</td>
+							</tr>{% endblock %}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <title>Criar calendário</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <style type="text/css">
+        .table-sortable tbody tr {
+    
+}
+
+
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+<form class="form-inline" method="POST">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 table-responsive" align="text-center">
+                <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                    <thead align="center">
+                        <tr >
+                            <th class="text-center">
+                                Mês
+                            </th>
+                            <th class="text-center">
+                                Dia Inicial
+                            </th>
+                            <th class="text-center">
+                                Dia Final
+                            </th>
+                            <th class="text-center">
+                                Descrição
+                            </th>
+                            
+                            <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if boler %}
+                            {% block content %}{% endblock %}
+                        {% else %}   
+                            <tr id='addr0' data-id="0" class="hidden" align="center">
+                                  
+                                <td data-name="name">
+                                    <select name="name0">
+                                        <option value="">Mês</option>
+                                        {% for mes in data %}
+                                            <option value= "{{ mes }}">{{ data[mes] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td data-name="diaini0">
+                                    <select name="diaini0">
+                                        <option value="">Dia Inicial</option>
+                                        {% for dia in dias %}
+                                          <option value= "{{ dia }}">{{ dia }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td data-name="diafin0">
+                                    <select name="diafin0">
+                                        <option value="">Dia Final</option>
+                                        {% for dia in dias %}
+                                          <option value= "{{ dia }}">{{ dia }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td data-name="desc">
+                                    <textarea name="desc0" placeholder="Descrição" class="form-control" cols="25" maxlength="800"></textarea>
+                                </td>
+                                
+                                                           
+                                <td data-name="del">
+                                    <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">&times;</span></button>
+                                </td>
+
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <a id="add_row" class="btn btn-primary float-left">Nova Data</a>
+            
+            <input type="submit" class="btn btn-dark float-right" value="Confirma" name="atualizarbdd">
+
+        </div>
+    </div>
+    <div class="col-md-12">
+        <h1> </h1>
+        <h3> </h3>
+    </div>
+
+</form>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $("#add_row").on("click", function() {
+        // Dynamic Rows Code
+        
+        // Get max row id and set new id
+        var newid = 0;
+        $.each($("#tab_logic tr"), function() {
+            if (parseInt($(this).data("id")) > newid) {
+                newid = parseInt($(this).data("id"));
+            }
+        });
+        newid++;
+        
+        var tr = $("<tr></tr>", {
+            id: "addr"+newid,
+            "data-id": newid
+        });
+        
+        // loop through each td and create new elements with name of newid
+        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
+            var td;
+            var cur_td = $(this);
+            
+            var children = cur_td.children();
+            
+            // add new td and element if it has a nane
+            if ($(this).data("name") !== undefined) {
+                td = $("<td align='center'></td>", {
+                    "data-name": $(cur_td).data("name")
+                });
+                
+                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
+                c.attr("name", $(cur_td).data("name") + newid);
+                c.appendTo($(td));
+                td.appendTo($(tr));
+            } else {
+                td = $("<td></td>", {
+                    'text': $('#tab_logic tr').length
+                }).appendTo($(tr));
+            }
+        });
+        
+        
+        // add the new row
+        $(tr).appendTo($('#tab_logic'));
+        
+        $(tr).find("td button.row-remove").on("click", function() {
+             $(this).closest("tr").remove();
+        });
+});
+
+});
+</script>
+</body>
+</html>
