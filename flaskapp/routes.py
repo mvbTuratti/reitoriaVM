@@ -584,9 +584,10 @@ def atividades_academicas():
 
 			if request.method == 'POST':
 				if request.form.get('atualizarbdd'):
+				
+					for ativ in nivel_curso:
+						db.session.delete(ativ)
 					try:
-						for ativ in nivel_curso:
-							db.session.delete(ativ)
 						db.session.commit()
 					except:
 						db.session.rollback()
@@ -600,8 +601,8 @@ def atividades_academicas():
 						des = "des" + strnumber
 						
 						try:
-							d1 = str(request.form[diaini])
-							d2 = str(request.form[diafin])
+							d1 = request.form[diaini]
+							d2 = request.form[diafin]
 							m = request.form[nam]
 							try:
 								c = str(request.form[desc])
@@ -621,10 +622,8 @@ def atividades_academicas():
 						except:
 							idd = 1
 						var_dic = {'id':idd, 'dia_inicio':d1, 'dia_final': d2, 'mes':m, 'comentario':c, 'cidade_id':str(city), 'ano': data_atual.year, 'flag': z}
-						try:
-							db.session.add(Atividades(**var_dic))
-						except:
-							db.session.rollback()
+						
+						db.session.add(Atividades(**var_dic))
 						
 					try:
 						db.session.commit()
@@ -647,108 +646,106 @@ def atividades_academicas():
 						db.session.rollback()
 
 				return redirect(url_for('controle'))
-			try:
-				atividades_ordenadas = [eventos_ordenados for eventos_ordenados in sorted(nivel_curso) if eventos_ordenados.ano == data_atual.year]
-				with open(paths, 'wb') as w:
-					string = r"""
-						{% extends "atividades_academicas.html" %}
-						{% block content %}
-							<tr id='addr0' data-id="0" class="hidden" align="center">
-			                                  
-			                                <td data-name="name">
-			                                    <select name="name0">
-			                                        <option value="">Mês</option>
-			                                        {% for mes in data %}
-			                                            <option value= "{{ mes }}">{{ data[mes] }}</option>
-			                                        {% endfor %}
-			                                    </select>
-			                                </td>
-			                                <td data-name="diaini">
-												<select name="diaini0">
-													<option value="">Dia Inicial</option>
-													{% for dia in dias %}
-														<option value= "{{ dia }}">{{ dia }}</option>
-													{% endfor %}
-												</select>
-											</td>
-											<td data-name="diafin">
-												<select name="diafin0">
-													<option value="">Dia Final</option>
-													{% for dia in dias %}
-														<option value= "{{ dia }}">{{ dia }}</option>
-													{% endfor %}
-												</select>
-											</td>
-			                                <td data-name="desc">
-			                                    <textarea name="desc0" placeholder="Descrição" class="form-control" cols="25" maxlength="800"></textarea>
-			                                </td>                     
-			                                <td data-name="del">
-			                                    <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">&times;</span></button>
-			                                </td>
 
-		                    </tr>"""
+			atividades_ordenadas = [eventos_ordenados for eventos_ordenados in sorted(nivel_curso) if eventos_ordenados.ano == data_atual.year]
+			with open(paths, 'wb') as w:
+				string = r"""
+					{% extends "atividades_academicas.html" %}
+					{% block content %}
+						<tr id='addr0' data-id="0" class="hidden" align="center">
+		                                  
+		                                <td data-name="name">
+		                                    <select name="name0">
+		                                        <option value="">Mês</option>
+		                                        {% for mes in data %}
+		                                            <option value= "{{ mes }}">{{ data[mes] }}</option>
+		                                        {% endfor %}
+		                                    </select>
+		                                </td>
+		                                <td data-name="diaini">
+							<select name="diaini0">
+								<option value="">Dia Inicial</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+							</select>
+						</td>
+						<td data-name="diafin">
+							<select name="diafin0">
+								<option value="">Dia Final</option>
+								{% for dia in dias %}
+									<option value= "{{ dia }}">{{ dia }}</option>
+								{% endfor %}
+							</select>
+						</td>
+		                                <td data-name="desc">
+		                                    <textarea name="desc0" placeholder="Descrição" class="form-control" cols="25" maxlength="800"></textarea>
+		                                </td>                     
+		                                <td data-name="del">
+		                                    <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">&times;</span></button>
+		                                </td>
 
-					for i, evento in enumerate(atividades_ordenadas, 1):
-						month = calendario[str(evento.mes)]
+	                    </tr>"""
 
-						string +=r"""
-							<tr id='addr%s' data-id="%s" class="hidden" align="center">
+				for i, evento in enumerate(atividades_ordenadas, 1):
+					month = calendario[str(evento.mes)]
 
-								<td data-name="name">
-									<select name="name%s">
+					string +=r"""
+						<tr id='addr%s' data-id="%s" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name%s">
+								<option value="%s" selected>%s</option>
+								{%% for mes in data %%}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{%% endfor %%}
+								</select>
+							</td>
+							<td data-name="diaini%s">
+								<select name="diaini%s">
 									<option value="%s" selected>%s</option>
-									{%% for mes in data %%}
-										<option value= "{{ mes }}">{{ data[mes] }}</option>
+									{%% for dia in dias %%}
+										<option value= "{{ dia }}">{{ dia }}</option>
 									{%% endfor %%}
-									</select>
-								</td>
-								<td data-name="diaini%s">
-									<select name="diaini%s">
-										<option value="%s" selected>%s</option>
-										{%% for dia in dias %%}
-											<option value= "{{ dia }}">{{ dia }}</option>
-										{%% endfor %%}
-									</select>
-								</td>
-								<td data-name="diafin%s">
-									<select name="diafin%s">
-										<option value="%s" selected>%s</option>
-										{%% for dia in dias %%}
-											<option value= "{{ dia }}">{{ dia }}</option>
-										{%% endfor %%}
-									</select>
-								</td>"""%(i,i,i,str(evento.mes), month,i, i,evento.dia_inicio, evento.dia_inicio, i, i, evento.dia_final, evento.dia_final)
-						if evento.flag:
-							a = latex_to_html(pat=r'\\textbf{([\s\w_]+)}', sentence=evento.comentario)
-							b = latex_to_html(pat=r'\\underline{([\s\w_]+)}', sentence=a)
-							html_string = latex_to_html(pat=r'\\textit{([\s\w_]+)}', sentence=b)
+								</select>
+							</td>
+							<td data-name="diafin%s">
+								<select name="diafin%s">
+									<option value="%s" selected>%s</option>
+									{%% for dia in dias %%}
+										<option value= "{{ dia }}">{{ dia }}</option>
+									{%% endfor %%}
+								</select>
+							</td>"""%(i,i,i,str(evento.mes), month,i, i,evento.dia_inicio, evento.dia_inicio, i, i, evento.dia_final, evento.dia_final)
+					if evento.flag:
+						a = latex_to_html(pat=r'\\textbf{([\s\w_]+)}', sentence=evento.comentario)
+						b = latex_to_html(pat=r'\\underline{([\s\w_]+)}', sentence=a)
+						html_string = latex_to_html(pat=r'\\textit{([\s\w_]+)}', sentence=b)
 
-							string+= r"""
-								<td data-name="des">
-									<input type="hidden" name="des%s" value="%s" id="des%s">
-									%s
-								</td>
-							"""%(i, evento.comentario, i, html_string)
+						string+= r"""
+							<td data-name="des">
+								<input type="hidden" name="des%s" value="%s" id="des%s">
+								%s
+							</td>
+						"""%(i, evento.comentario, i, html_string)
 
-						else:
-							string+=r"""
-								<td data-name="desc">
-									<textarea name="desc%s" placeholder="Descrição" class="form-control" cols="25" maxlength="800">%s</textarea>
-								</td>"""%(i, evento.comentario)
+					else:
+						string+=r"""
+							<td data-name="desc">
+								<textarea name="desc%s" placeholder="Descrição" class="form-control" cols="25" maxlength="800">%s</textarea>
+							</td>"""%(i, evento.comentario)
 
-						string+= r"""	                     
-								<td data-name="del">
-								
-									<input type="submit" class="btn btn-danger" value="x" name="del%s">
-								
-								</td>
-							</tr>""" %(i)
-					string+= r"{% endblock %}"
-					w.write(string.encode('utf-8'))
-				return render_template('child_ativ_acad.html', boler=True, data = calendario, dias=range(1,32))
+					string+= r"""	                     
+							<td data-name="del">
+							
+								<input type="submit" class="btn btn-danger" value="x" name="del%s">
+							
+							</td>
+						</tr>""" %(i)
+				string+= r"{% endblock %}"
+				w.write(string.encode('utf-8'))
+			return render_template('child_ativ_acad.html', boler=True, data = calendario, dias=range(1,32))
 
-			except:
-				return render_template('atividades_academicas.html', data = calendario, dias=range(1,32))
 		else:
 			return redirect(url_for('controle'))
 	else:
