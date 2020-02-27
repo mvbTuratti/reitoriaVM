@@ -34,6 +34,7 @@ encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()]
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
+	session.clear()
 	if request.method=='POST':
 		log = request.form['login']
 		sen = request.form['senha']
@@ -59,6 +60,7 @@ def controle():
 				session.pop('tecnico', None)
 				session.pop('graduacao', None)
 				session.pop('calem', None)
+				session['login'] = log
 				if request.form.get('diasletivos0'):
 					session['tabela'] = 'tecnico' 
 					return redirect(url_for('dias'))
@@ -95,6 +97,7 @@ def controle():
 					return redirect(url_for('tectable'))
 
 				elif request.form.get('logout'):
+					session.pop('login',None)
 					session.clear()
 					return redirect(url_for('home'))
 
@@ -646,7 +649,7 @@ def atividades_academicas():
 						db.session.rollback()
 
 				return redirect(url_for('controle'))
-
+			nivel_curso = Campi.query.filter_by(cidade=session['login'])[0].atividades
 			atividades_ordenadas = [eventos_ordenados for eventos_ordenados in sorted(nivel_curso) if eventos_ordenados.ano == data_atual.year]
 			with open(paths, 'wb') as w:
 				string = r"""
@@ -1048,6 +1051,13 @@ def valores():
 					except:
 						db.session.rollback()
 				return redirect(url_for('controle'))
+			city = Campi.query.filter_by(cidade=session['login'])[0]
+			if tab == 'graduacao':
+				nivel_curso = city.graduacao[0]
+			elif tab == 'tecnico':
+				nivel_curso = city.tecnico[0]
+			elif tab == 'calem':
+				nivel_curso = city.calem[0]
 			atividades_ordenadas = sorted(nivel_curso.atividades)	
 			with open(paths, 'wb') as w:
 				string = r"""
