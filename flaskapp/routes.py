@@ -171,10 +171,10 @@ def download():
 					else:
 						corte_vertical = 4
 
-					if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 7 and ativids.mes < 10)]) < 9:
-						corte_vertical2 = 10
+					if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 8 and ativids.mes < 10)]) < 9:
+						corte_vertical2 = 11
 					else:
-						corte_vertical2 = 9
+						corte_vertical2 = 10
 					
 					for letivos in tec.dias:
 						if letivos.mes > 1:
@@ -186,7 +186,7 @@ def download():
 \columnbreak
 \section{\hfill \color{hmcorange}1º Semestre}
 """
-							elif letivos.mes == 7:
+							elif letivos.mes == 8:
 								string+= r"""\newpage
 \section{\color{hmcorange}Técnico}"""
 							elif letivos.mes == corte_vertical2:
@@ -260,10 +260,10 @@ def download():
 						corte_vertical = 5
 					else:
 						corte_vertical = 4
-					if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 7 and ativids.mes < 10)]) < 9:
-						corte_vertical2 = 10
+					if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 8 and ativids.mes < 10)]) < 9:
+						corte_vertical2 = 11
 					else:
-						corte_vertical2 = 9
+						corte_vertical2 = 10
 					for letivos in grad.dias:
 						if letivos.mes > 1:
 							if letivos.dia == 0:
@@ -274,7 +274,7 @@ def download():
 \columnbreak
 \section{\hfill \color{hmcorange}1º Semestre}
 """
-							elif letivos.mes == 7:
+							elif letivos.mes == 8:
 								string+= r"""\newpage
 \section{\color{hmcorange}Graduação}"""
 							elif letivos.mes == corte_vertical2:
@@ -349,10 +349,10 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 					else:
 						corte_vertical = 4
 
-					if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 7 and ativids.mes < 10)]) < 9:
-						corte_vertical2 = 10
+					if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 8 and ativids.mes < 10)]) < 9:
+						corte_vertical2 = 11
 					else:
-						corte_vertical2 = 9
+						corte_vertical2 = 10
 
 					for letivos in cal.dias:
 						if letivos.mes > 1:
@@ -364,7 +364,7 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 \columnbreak
 \section{\hfill \color{hmcorange}1º Semestre}
 								"""
-							elif letivos.mes == 7:
+							elif letivos.mes == 8:
 								string+= r"""\newpage
 \section{\color{hmcorange}Calem}"""
 							elif letivos.mes == corte_vertical2:
