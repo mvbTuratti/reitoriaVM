@@ -166,7 +166,7 @@ def download():
 					string+= r"\section{\color{hmcorange}Técnico Integrado}"
 					tec = city.tecnico[0]
 					atividades_ordenadas = sorted([eventos_atuais for eventos_atuais in tec.atividades if eventos_atuais.ano == ano])
-					if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 9:
+					if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 8:
 						corte_vertical = 5
 					else:
 						corte_vertical = 4
@@ -178,10 +178,9 @@ def download():
 					
 					for letivos in tec.dias:
 						if letivos.mes > 1:
-							if letivos.dia == 0:
-								continue
+							
 
-							elif letivos.mes == corte_vertical:
+							if letivos.mes == corte_vertical:
 								string+= r"""\vfill\null
 \columnbreak
 \section{\hfill \color{hmcorange}1º Semestre}
@@ -256,7 +255,7 @@ def download():
 					string+= r"\section{\color{hmcorange}Graduação}"
 					grad = city.graduacao[0]
 					atividades_ordenadas = sorted([eventos_atuais for eventos_atuais in grad.atividades if eventos_atuais.ano == ano])
-					if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 9:
+					if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 8:
 						corte_vertical = 5
 					else:
 						corte_vertical = 4
@@ -266,10 +265,8 @@ def download():
 						corte_vertical2 = 10
 					for letivos in grad.dias:
 						if letivos.mes > 1:
-							if letivos.dia == 0:
-								continue
-
-							elif letivos.mes == corte_vertical:
+							
+							if letivos.mes == corte_vertical:
 								string+= r"""\vfill\null
 \columnbreak
 \section{\hfill \color{hmcorange}1º Semestre}
@@ -344,7 +341,7 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 					
 					cal = city.calem[0]
 					atividades_ordenadas = sorted([eventos_atuais for eventos_atuais in cal.atividades if eventos_atuais.ano == ano])
-					if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 9:
+					if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 8:
 						corte_vertical = 5
 					else:
 						corte_vertical = 4
@@ -356,10 +353,9 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 
 					for letivos in cal.dias:
 						if letivos.mes > 1:
-							if letivos.dia == 0:
-								continue
+							
 
-							elif letivos.mes == corte_vertical:
+							if letivos.mes == corte_vertical:
 								string+= r"""\vfill\null
 \columnbreak
 \section{\hfill \color{hmcorange}1º Semestre}
@@ -435,26 +431,26 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 				else:
 					string+= r"\textbf{Informações sobre datas Calem entrar em contato com a coordenação} \newpage"
 
-				string+= r"\onespacing \section{\color{hmcorange}Feriados, Recessos e Férias}"
+				string+= r"\onespacing \small \section{\color{hmcorange}Feriados, Recessos e Férias}"
 				try:
 					ordenados = sorted([feriados for feriados in city.ferias if feriados.ano == ano])
 					mes_atual = 0
 					
 					for it in ordenados:
 						if it.mes > mes_atual:
-							string+= r"\subsection{%s}" %(calendario[str(it.mes)])
+							string += r"\subsection{%s}" %(calendario[str(it.mes)])
 							mes_atual = it.mes
 						string+= str(it)
 				except:
 					pass
 				string+= r"""\newpage
-\section{\color{hmcorange}Atividades E Eventos}"""	
+\normalsize \section{\color{hmcorange}Atividades E Eventos}"""	
 				try:
 					ordenados = sorted([ativis for ativis in city.atividades if ativis.ano == ano])
 					mes_atual = 0
 					for it in ordenados:
 						if it.mes > mes_atual:
-							string+= r"\subsection{%s}" %(calendario[str(it.mes)])
+							string += r"\subsection{%s}" %(calendario[str(it.mes)])
 							mes_atual = it.mes
 						string+= str(it)
 				except:

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.2.21)  28 FEB 2020 21:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.2.21)  28 FEB 2020 20:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**apucarana.tex
-(./apucarana.tex
+**mourao.tex
+(./mourao.tex
 LaTeX2e <2018-12-01>
 (./hmcposter.cls
 Document Class: hmcposter 2015/03/31 v6.0 HMC Mathematics LaTeX poster class
@@ -459,8 +459,8 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <36> not available
 (Font)              size <24.88> substituted on input line 17.
 
-(./apucarana.aux)
-\openout1 = `apucarana.aux'.
+No file mourao.aux.
+\openout1 = `mourao.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
@@ -476,7 +476,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 18.
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 18.
@@ -647,17 +647,24 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <64> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 60.7998pt on input line 20.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <48> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 20.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <48> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 20.
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 45.59985pt on input line 20.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <36> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 20.
+
+
+pdfTeX warning: pdflatex (file ./utfpr.pdf): PDF inclusion: found PDF version <
+1.7>, but at most version <1.5> allowed
+<utfpr.pdf, id=1, 320.19624pt x 142.5325pt>
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 20.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
 LaTeX Font Info:    Calculating math sizes for size <36> on input line 20.
 LaTeX Font Info:    Try loading font information for OML+zplm on input line 20.
-
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
@@ -680,153 +687,110 @@ LaTeX Font Info:    Try loading font information for OT1+zplm on input line 20.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
-LaTeX Font Info:    Try loading font information for TS1+phv on input line 22.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
-File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
-)
-LaTeX Font Info:    Font shape `TS1/phv/bx/n' in size <64> not available
-(Font)              Font shape `TS1/phv/b/n' tried instead on input line 22.
-LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
-(Font)              scaled to size 60.7998pt on input line 22.
-
-
-pdfTeX warning: pdflatex (file ./utfpr.pdf): PDF inclusion: found PDF version <
-1.7>, but at most version <1.5> allowed
-<utfpr.pdf, id=1, 320.19624pt x 142.5325pt>
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 23.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 60.7998pt on input line 23.
+(Font)              scaled to size 60.7998pt on input line 20.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 94.9997pt on input line 23.
+(Font)              scaled to size 94.9997pt on input line 20.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <100> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 23.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 94.9997pt on input line 23.
+(Font)              scaled to size 94.9997pt on input line 20.
+
+
+pdfTeX warning: pdflatex (file ./hmcmath-hexen-logo.pdf): PDF inclusion: found 
+PDF version <1.7>, but at most version <1.5> allowed
+<hmcmath-hexen-logo.pdf, id=2, 232.36812pt x 75.28125pt>
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 20.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./utfpr.pdf>]
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 27.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
-[2]
-LaTeX Font Info:    Calculating math sizes for size <48> on input line 45.
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 45.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-)
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <30> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 45.
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 77.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
-[3]
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 80.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
-[4]
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 84.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
-[5]
-LaTeX Font Info:    Font shape `TS1/ppl/bx/n' in size <48> not available
-(Font)              Font shape `TS1/ppl/b/n' tried instead on input line 127.
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 135.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
-[6]
+ <./utfpr.pdf> <./hmcmath-hexen-logo.pdf>]
 ! Undefined control sequence.
-l.135 \newpage\onespacing
-                          \small \section{\color{hmcorange}Feriados, Recesso...
+l.20 ...o com a coordenação} \newpage\onespacing
+                                                   \small \section{\color{hm...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <48> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 20.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <48> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 20.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 45.59985pt on input line 20.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <30> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 20.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <30> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 135.
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 20.
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 135.
+Package pdftex.def Info: utfpr.pdf  used on input line 20.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
-[7]
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 20.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[2]
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 136.
+Package pdftex.def Info: utfpr.pdf  used on input line 20.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
-[8] (./apucarana.aux)
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 20.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[3]
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 21.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 21.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[4] (./mourao.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 11.12pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 5683 strings out of 492615
- 82918 string characters out of 6131390
- 154699 words of memory out of 5000000
- 9474 multiletter control sequences out of 15000+600000
- 31707 words of font info for 74 fonts, out of 8000000 for 9000
+ 5602 strings out of 492615
+ 81776 string characters out of 6131390
+ 154767 words of memory out of 5000000
+ 9408 multiletter control sequences out of 15000+600000
+ 23098 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,20n,50p,2127b,581s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,20n,50p,2492b,578s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatin
 o/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pf
 b>
-Output written on apucarana.pdf (8 pages, 82048 bytes).
+Output written on mourao.pdf (4 pages, 82069 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 46 PDF objects out of 1000 (max. 8388607)
+ 29 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
