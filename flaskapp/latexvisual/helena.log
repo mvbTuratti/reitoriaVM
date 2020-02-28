@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.2.21)  28 FEB 2020 13:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.2.21)  28 FEB 2020 13:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**admin.tex
-(./admin.tex
+**helena.tex
+(./helena.tex
 LaTeX2e <2018-12-01>
 (./hmcposter.cls
 Document Class: hmcposter 2015/03/31 v6.0 HMC Mathematics LaTeX poster class
@@ -459,8 +459,8 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <36> not available
 (Font)              size <24.88> substituted on input line 17.
 
-(./admin.aux)
-\openout1 = `admin.aux'.
+(./helena.aux)
+\openout1 = `helena.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
@@ -655,6 +655,31 @@ LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 45.59985pt on input line 20.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <36> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 20.
+LaTeX Font Info:    Calculating math sizes for size <36> on input line 20.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 20.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 20.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 20.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 20.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
 LaTeX Font Info:    Try loading font information for TS1+phv on input line 22.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
@@ -664,31 +689,7 @@ LaTeX Font Info:    Font shape `TS1/phv/bx/n' in size <64> not available
 (Font)              Font shape `TS1/phv/b/n' tried instead on input line 22.
 LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
 (Font)              scaled to size 60.7998pt on input line 22.
-LaTeX Font Info:    Calculating math sizes for size <36> on input line 23.
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 23.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
-File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
-)
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 23.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
-File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
-)
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 23.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
-File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
-)
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 23.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
-File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-)
 
 pdfTeX warning: pdflatex (file ./utfpr.pdf): PDF inclusion: found PDF version <
 1.7>, but at most version <1.5> allowed
@@ -710,9 +711,18 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <100> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 23.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 94.9997pt on input line 23.
+
+
+pdfTeX warning: pdflatex (file ./hmcmath-hexen-logo.pdf): PDF inclusion: found 
+PDF version <1.7>, but at most version <1.5> allowed
+<hmcmath-hexen-logo.pdf, id=2, 232.36812pt x 75.28125pt>
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 23.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./utfpr.pdf>]
+ <./utfpr.pdf> <./hmcmath-hexen-logo.pdf>]
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
 Package pdftex.def Info: utfpr.pdf  used on input line 27.
@@ -722,6 +732,10 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 27.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [2]
 LaTeX Font Info:    Calculating math sizes for size <48> on input line 45.
 LaTeX Font Info:    Try loading font information for TS1+ppl on input line 45.
@@ -739,6 +753,10 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 77.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [3]
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
@@ -749,6 +767,10 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 77.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [4]
 ! Undefined control sequence.
 l.77 ...o com a coordenação} \newpage\onespacing
@@ -770,6 +792,10 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 77.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [5]
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
@@ -780,6 +806,10 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 77.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [6]
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
@@ -790,30 +820,34 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
-[7] (./admin.aux)
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 78.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[7] (./helena.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 11.12pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 5676 strings out of 492615
- 82809 string characters out of 6131390
- 154695 words of memory out of 5000000
- 9470 multiletter control sequences out of 15000+600000
+ 5682 strings out of 492615
+ 82979 string characters out of 6131390
+ 156766 words of memory out of 5000000
+ 9475 multiletter control sequences out of 15000+600000
  30491 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,20n,50p,2230b,579s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,20n,50p,2435b,580s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatin
 o/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pf
 b>
-Output written on admin.pdf (7 pages, 76892 bytes).
+Output written on helena.pdf (7 pages, 95647 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 35 compressed objects within 1 object stream
+ 57 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -31,7 +31,7 @@
 
 							<td data-name="name">
 								<select name="name1">
-								<option value="2" selected>Fevereiro</option>
+								<option value="1" selected>Janeiro</option>
 								{% for mes in data %}
 									<option value= "{{ mes }}">{{ data[mes] }}</option>
 								{% endfor %}
@@ -39,14 +39,14 @@
 							</td>
 							<td data-name="dia">
 								<select name="dia1">
-								<option value="27" selected>27</option>
+								<option value="1" selected>1</option>
 								{% for dia in dias %}
 									<option value= "{{ dia }}">{{ dia }}</option>
 								{% endfor %}
 								</select>
 							</td>
 							<td data-name="desc">
-								<textarea name="desc1" placeholder="Descrição" class="form-control" cols="25" maxlength="800">É hoje</textarea>
+								<textarea name="desc1" placeholder="Descrição" class="form-control" cols="25" maxlength="800">evento</textarea>
 							</td>                     
 							<td data-name="del">
 								<input type="submit" class="btn btn-danger" value="x" name="del1">
@@ -523,15 +523,17 @@
 							</td>
 							<td data-name="dia">
 								<select name="dia19">
-								<option value="1" selected>1</option>
+								<option value="19" selected>19</option>
 								{% for dia in dias %}
 									<option value= "{{ dia }}">{{ dia }}</option>
 								{% endfor %}
 								</select>
 							</td>
-							<td data-name="desc">
-								<textarea name="desc19" placeholder="Descrição" class="form-control" cols="25" maxlength="800">semestreee</textarea>
-							</td>                     
+							<td data-name="des">
+								<input type="hidden" name="des19" value="\textbf{Término do semestre letivo}" id="des19">
+								<b>Término do semestre letivo</b>
+							</td>
+						                     
 							<td data-name="del">
 								<input type="submit" class="btn btn-danger" value="x" name="del19">
 							</td>
@@ -555,8 +557,8 @@
 								</select>
 							</td>
 							<td data-name="des">
-								<input type="hidden" name="des20" value="\textbf{Término do semestre letivo}" id="des20">
-								<b>Término do semestre letivo</b>
+								<input type="hidden" name="des20" value="Data limite para \underline{publicação} da \textbf{segunda nota bimestral} e \underline{lançamento} no sistema acadêmico" id="des20">
+								Data limite para <u>publicação</u> da <b>segunda nota bimestral</b> e <u>lançamento</u> no sistema acadêmico
 							</td>
 						                     
 							<td data-name="del">
@@ -575,33 +577,6 @@
 							</td>
 							<td data-name="dia">
 								<select name="dia21">
-								<option value="19" selected>19</option>
-								{% for dia in dias %}
-									<option value= "{{ dia }}">{{ dia }}</option>
-								{% endfor %}
-								</select>
-							</td>
-							<td data-name="des">
-								<input type="hidden" name="des21" value="Data limite para \underline{publicação} da \textbf{segunda nota bimestral} e \underline{lançamento} no sistema acadêmico" id="des21">
-								Data limite para <u>publicação</u> da <b>segunda nota bimestral</b> e <u>lançamento</u> no sistema acadêmico
-							</td>
-						                     
-							<td data-name="del">
-								<input type="submit" class="btn btn-danger" value="x" name="del21">
-							</td>
-						</tr>
-						<tr id='addr22' data-id="22" class="hidden" align="center">
-
-							<td data-name="name">
-								<select name="name22">
-								<option value="12" selected>Dezembro</option>
-								{% for mes in data %}
-									<option value= "{{ mes }}">{{ data[mes] }}</option>
-								{% endfor %}
-								</select>
-							</td>
-							<td data-name="dia">
-								<select name="dia22">
 								<option value="20" selected>20</option>
 								{% for dia in dias %}
 									<option value= "{{ dia }}">{{ dia }}</option>
@@ -609,11 +584,11 @@
 								</select>
 							</td>
 							<td data-name="des">
-								<input type="hidden" name="des22" value="Data limite para o \underline{envio} dos \textbf{diários de classe} ao DERAC" id="des22">
+								<input type="hidden" name="des21" value="Data limite para o \underline{envio} dos \textbf{diários de classe} ao DERAC" id="des21">
 								Data limite para o <u>envio</u> dos <b>diários de classe</b> ao DERAC
 							</td>
 						                     
 							<td data-name="del">
-								<input type="submit" class="btn btn-danger" value="x" name="del22">
+								<input type="submit" class="btn btn-danger" value="x" name="del21">
 							</td>
 						</tr>{% endblock %}
