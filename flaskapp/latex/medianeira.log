@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.2.21)  2 MAR 2020 14:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.2.21)  2 MAR 2020 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -655,31 +655,6 @@ LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 45.59985pt on input line 20.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <36> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 20.
-LaTeX Font Info:    Calculating math sizes for size <36> on input line 20.
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 20.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
-File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
-)
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 20.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
-File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
-)
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 20.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
-File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
-)
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 20.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
-File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-)
 LaTeX Font Info:    Try loading font information for TS1+phv on input line 22.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
@@ -689,7 +664,31 @@ LaTeX Font Info:    Font shape `TS1/phv/bx/n' in size <64> not available
 (Font)              Font shape `TS1/phv/b/n' tried instead on input line 22.
 LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
 (Font)              scaled to size 60.7998pt on input line 22.
+LaTeX Font Info:    Calculating math sizes for size <36> on input line 23.
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 23.
 
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 23.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 23.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 23.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
 
 pdfTeX warning: pdflatex (file ./utfpr.pdf): PDF inclusion: found PDF version <
 1.7>, but at most version <1.5> allowed
@@ -731,9 +730,11 @@ File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <30> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 45.
+LaTeX Font Info:    Font shape `TS1/ppl/bx/n' in size <48> not available
+(Font)              Font shape `TS1/ppl/b/n' tried instead on input line 70.
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 77.
+Package pdftex.def Info: utfpr.pdf  used on input line 78.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
@@ -743,7 +744,7 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [3]
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 80.
+Package pdftex.def Info: utfpr.pdf  used on input line 81.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
@@ -753,7 +754,7 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [4]
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 84.
+Package pdftex.def Info: utfpr.pdf  used on input line 85.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
@@ -761,8 +762,6 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
  []
 
 [5]
-LaTeX Font Info:    Font shape `TS1/ppl/bx/n' in size <48> not available
-(Font)              Font shape `TS1/ppl/b/n' tried instead on input line 127.
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
 Package pdftex.def Info: utfpr.pdf  used on input line 135.
@@ -773,20 +772,9 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
  []
 
 [6]
-! Undefined control sequence.
-l.135 \newpage\onespacing
-                          \small \section{\color{hmcorange}Feriados, Recesso...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <30> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 135.
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 135.
+Package pdftex.def Info: utfpr.pdf  used on input line 138.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
@@ -796,14 +784,55 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [7]
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 136.
+Package pdftex.def Info: utfpr.pdf  used on input line 142.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
-[8] (./medianeira.aux)
+[8]
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 193.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[9]
+! Undefined control sequence.
+l.193 \newpage\onespacing
+                          \small \section{\color{hmcorange}Feriados, Recesso...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <30> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 193.
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 193.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[10]
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 194.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[11] (./medianeira.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 11.12pt have occurred.
@@ -816,17 +845,17 @@ Here is how much of TeX's memory you used:
  9475 multiletter control sequences out of 15000+600000
  32261 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,20n,50p,2016b,582s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,20n,50p,2016b,581s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatin
 o/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pf
 b>
-Output written on medianeira.pdf (8 pages, 82759 bytes).
+Output written on medianeira.pdf (11 pages, 87028 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 65 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
