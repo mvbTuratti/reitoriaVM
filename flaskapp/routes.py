@@ -455,6 +455,8 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 						string+= str(it)
 				except:
 					pass
+				data_atual = datetime.datetime.today()
+				string+= r""" ~ \vfill \hfill \footnotesize \color{hmcorange}Gerado em %s, de %s """ %(data_atual.day, calendario[data_atual.month])
 				string+= r"""\end{poster}
 \end{document}"""
 				w.write(string.encode('utf-8'))
