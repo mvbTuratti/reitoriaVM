@@ -1201,4 +1201,39 @@
 								<input type="submit" class="btn btn-danger" value="x" name="del33">
 							
 							</td>
+						</tr>
+						<tr id='addr34' data-id="34" class="hidden" align="center">
+
+							<td data-name="name">
+								<select name="name34">
+								<option value="11" selected>Novembro</option>
+								{% for mes in data %}
+									<option value= "{{ mes }}">{{ data[mes] }}</option>
+								{% endfor %}
+								</select>
+							</td>
+							<td data-name="diaini">
+								<select name="diaini34">
+									<option value="25" selected>25</option>
+									{% for dia in dias %}
+										<option value= "{{ dia }}">{{ dia }}</option>
+									{% endfor %}
+								</select>
+							</td>
+							<td data-name="diafin">
+								<select name="diafin34">
+									<option value="25" selected>25</option>
+									{% for dia in dias %}
+										<option value= "{{ dia }}">{{ dia }}</option>
+									{% endfor %}
+								</select>
+							</td>
+							<td data-name="desc">
+								<textarea name="desc34" placeholder="Descrição" class="form-control" cols="25" maxlength="800">Projeto Acontece às Quartas</textarea>
+							</td>	                     
+							<td data-name="del">
+							
+								<input type="submit" class="btn btn-danger" value="x" name="del34">
+							
+							</td>
 						</tr>{% endblock %}
