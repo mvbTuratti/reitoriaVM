@@ -116,6 +116,8 @@ def controle():
 						session['graduacao'] = True
 					if request.form.get('input3'):
 						session['calem'] = True
+					if request.form.get('semCalem'):
+						session['seminf'] = True
 					return redirect(url_for('download'))
 			
 			return render_template('controle.html', log=log.upper(), dia=hoje.dia, mes=hoje.mes, ano=hoje.ano, calemMsg="Informações sobre datas CALEM entrar em contato com a coordenação", feriados=False)
@@ -163,43 +165,151 @@ def download():
 \normalsize""" %(ano, str(session['login']).upper(), ano)
 
 				if 'tecnico' in session:
-					string+= r"\section{\color{hmcorange}Técnico Integrado}"
-					tec = city.tecnico[0]
-					atividades_ordenadas = sorted([eventos_atuais for eventos_atuais in tec.atividades if eventos_atuais.ano == ano])
-					if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 8:
-						corte_vertical = 5
-					else:
-						corte_vertical = 4
+					lista_tecnico_anual = ['campo mourão', 'pato branco']
+					log2 = session['login']
+					if log2 in lista_tecnico_anual:
+						string+= r"\section{\color{hmcorange}Técnico Integrado Anual}"
+						tec = city.tecnico[0]
+						atividades_ordenadas = sorted([eventos_atuais for eventos_atuais in tec.atividades if eventos_atuais.ano == ano])
+						if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 8:
+							corte_vertical = 5
+						else:
+							corte_vertical = 4
 
-					if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 8 and ativids.mes < 10)]) < 9:
-						corte_vertical2 = 11
-					else:
-						corte_vertical2 = 10
-					
-					for letivos in tec.dias:
-						if letivos.mes > 1:
-							
+						if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 8 and ativids.mes < 10)]) < 9:
+							corte_vertical2 = 11
+						else:
+							corte_vertical2 = 10
+						
+						for letivos in tec.dias:
+							if letivos.mes > 1:
+								
 
-							if letivos.mes == corte_vertical:
-								string+= r"""\vfill\null
+								if letivos.mes == corte_vertical:
+									string+= r"""\vfill\null
 \columnbreak
 \section{\hfill \color{hmcorange}1º Semestre}
 """
-							elif letivos.mes == 8:
-								string+= r"""\newpage
+								elif letivos.mes == 8:
+									string+= r"""\newpage
 \section{\color{hmcorange}Técnico}"""
-							elif letivos.mes == corte_vertical2:
-								string+= r"""\vfill\null
+								elif letivos.mes == corte_vertical2:
+									string+= r"""\vfill\null
 \columnbreak
 \section{\hfill \color{hmcorange}2º Semestre}
 """
-							string+= r"\subsection{%s \hfill %s dias letivos}" % (calendario[str(letivos.mes)], letivos.dia)
-							substring = [ativ for ativ in atividades_ordenadas if ativ.mes == letivos.mes]
-							for i in substring:
-								string += str(i)
-					tabelax = tec.tabela1 + tec.tabela2
-					tup2 = tuple(tabelax.split(';')[:-1])
-					string+= r"""\newpage
+								string+= r"\subsection{%s \hfill %s dias letivos}" % (calendario[str(letivos.mes)], letivos.dia)
+								substring = [ativ for ativ in atividades_ordenadas if ativ.mes == letivos.mes]
+								if substring:
+									for index, i in enumerate(substring):
+										if index == 0:
+											string += str(i)
+										else: 
+											string = string[:-5] + str(i)
+									string = string[:-14]
+								else:
+									string += r' \null \newline '
+						tabelax = tec.tabela1 + tec.tabela2
+						tup2 = tuple(tabelax.split(';')[:-1])
+						string+= r"""\newpage
+~
+\vfill
+\begin{center}
+\large \textbf{DIAS LETIVOS DO CURSO TÉCNICO INTEGRADO ANUAL}
+\newline
+\null
+\newline
+\begin{table}
+\centering
+\resizebox{0.7\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{SEMESTRE} & \textbf{SEG} & \textbf{TER} & \textbf{QUA} & \textbf{QUI} & \textbf{SEX} & \textbf{SÁB} \\ \hline
+1º & %s & %s & %s & %s & %s & %s \\ \hline
+2º & %s & %s & %s & %s & %s & %s \\ \hline
+\multicolumn{6}{|c|}{\small \textbf{Total de dias efetivos de atividades acadêmicas:}}              & %s            \\ \hline
+\end{tabular}
+}
+\end{table}
+\newline
+\null
+\newline
+\end{center}
+\vfill
+\null
+\columnbreak
+~
+\vfill
+\begin{center}
+\large \textbf{DIAS LETIVOS DO CURSO TÉCNICO INTEGRADO}
+\end{center}
+\begin{center}
+    \large \textbf{ANUAL}
+\end{center}
+\null
+\begin{center}
+\begin{table}
+\centering
+\resizebox{0.9\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}1ª NOTA\\ BIMESTRAL\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}2ª NOTA \\ BIMESTRAL\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}3ª NOTA \\ BIMESTRAL\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}4ª NOTA \\ BIMESTRAL\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}TÉRMINO DO \\ANO LETIVO\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}RESULTADOS\\ FINAIS\end{tabular}} \\ \hline
+%s & %s & %s & %s & %s & %s \\ \hline
+\end{tabular}
+}
+\end{table}
+\newline
+\null
+\newline
+\end{center}
+\vfill
+\null
+\newpage""" % tup2 
+					else:
+						string+= r"\section{\color{hmcorange}Técnico Integrado}"
+						tec = city.tecnico[0]
+						atividades_ordenadas = sorted([eventos_atuais for eventos_atuais in tec.atividades if eventos_atuais.ano == ano])
+						if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 8:
+							corte_vertical = 5
+						else:
+							corte_vertical = 4
+
+						if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 8 and ativids.mes < 10)]) < 9:
+							corte_vertical2 = 11
+						else:
+							corte_vertical2 = 10
+						
+						for letivos in tec.dias:
+							if letivos.mes > 1:
+								
+
+								if letivos.mes == corte_vertical:
+									string+= r"""\vfill\null
+\columnbreak
+\section{\hfill \color{hmcorange}1º Semestre}
+"""
+								elif letivos.mes == 8:
+									string+= r"""\newpage
+\section{\color{hmcorange}Técnico}"""
+								elif letivos.mes == corte_vertical2:
+									string+= r"""\vfill\null
+\columnbreak
+\section{\hfill \color{hmcorange}2º Semestre}
+"""
+								string+= r"\subsection{%s \hfill %s dias letivos}" % (calendario[str(letivos.mes)], letivos.dia)
+								substring = [ativ for ativ in atividades_ordenadas if ativ.mes == letivos.mes]
+								if substring:
+									for index, i in enumerate(substring):
+										if index == 0:
+											string += str(i)
+										else: 
+											string = string[:-5] + str(i)
+									string = string[:-14]
+								else:
+									string += r' \null \newline '
+						tabelax = tec.tabela1 + tec.tabela2
+						tup2 = tuple(tabelax.split(';')[:-1])
+						string+= r"""\newpage
 ~
 \vfill
 \begin{center}
@@ -281,8 +391,15 @@ def download():
 """
 							string+= r"\subsection{%s \hfill %s dias letivos}" % (calendario[str(letivos.mes)], letivos.dia)
 							substring = [ativ for ativ in atividades_ordenadas if ativ.mes == letivos.mes]
-							for i in substring:
-								string += str(i)
+							if substring:
+								for index, i in enumerate(substring):
+									if index == 0:
+										string += str(i)
+									else: 
+										string = string[:-5] + str(i)
+								string = string[:-14]
+							else:
+								string += r' \null \newline '
 					tabelax = grad.tabela1 + grad.tabela2
 					tup2 = tuple(tabelax.split(';')[:-1])
 					string+= r"""\newpage
@@ -336,127 +453,141 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 \vfill
 \null
 \newpage""" % tup2
-				string+= r"\section{\color{hmcorange}Calem}"
+				
 				if 'calem' in session:
-					
-					cal = city.calem[0]
-					atividades_ordenadas = sorted([eventos_atuais for eventos_atuais in cal.atividades if eventos_atuais.ano == ano])
-					if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 8:
-						corte_vertical = 5
+					string+= r"\section{\color{hmcorange}Calem}"
+					if 'seminf' in session:
+						string+= r"\textbf{Informações sobre datas Calem entrar em contato com a coordenação} \newpage"
 					else:
-						corte_vertical = 4
+						cal = city.calem[0]
+						atividades_ordenadas = sorted([eventos_atuais for eventos_atuais in cal.atividades if eventos_atuais.ano == ano])
+						if len([ativids for ativids in atividades_ordenadas if ativids.mes < 5]) < 8:
+							corte_vertical = 5
+						else:
+							corte_vertical = 4
 
-					if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 8 and ativids.mes < 10)]) < 9:
-						corte_vertical2 = 11
-					else:
-						corte_vertical2 = 10
+						if len([ativids for ativids in atividades_ordenadas if (ativids.mes >= 8 and ativids.mes < 10)]) < 9:
+							corte_vertical2 = 11
+						else:
+							corte_vertical2 = 10
 
-					for letivos in cal.dias:
-						if letivos.mes > 1:
-							
+						for letivos in cal.dias:
+							if letivos.mes > 1:
+								
 
-							if letivos.mes == corte_vertical:
-								string+= r"""\vfill\null
+								if letivos.mes == corte_vertical:
+									string+= r"""\vfill\null
 \columnbreak
 \section{\hfill \color{hmcorange}1º Semestre}
-								"""
-							elif letivos.mes == 8:
-								string+= r"""\newpage
+									"""
+								elif letivos.mes == 8:
+									string+= r"""\newpage
 \section{\color{hmcorange}Calem}"""
-							elif letivos.mes == corte_vertical2:
-								string+= r"""\vfill\null
+								elif letivos.mes == corte_vertical2:
+									string+= r"""\vfill\null
 \columnbreak
 \section{\hfill \color{hmcorange}2º Semestre}
 							"""
-							string+= r"\subsection{%s \hfill %s dias letivos}" % (calendario[str(letivos.mes)], letivos.dia)
-							substring = [ativ for ativ in atividades_ordenadas if ativ.mes == letivos.mes]
-							flag = 0
-							
-							for i in substring:
-								string += str(i)
-					tabelax = cal.tabela1 + cal.tabela2
-					tup2 = tuple(tabelax.split(';')[:-1])
-					string+= r"""\newpage
-~
-\vfill
-\begin{center}
-\large \textbf{DIAS LETIVOS DOS CURSOS DO CALEM}
-\newline
-\null
-\newline
-\begin{table}
-\centering
-\resizebox{0.7\columnwidth}{!}{
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\textbf{SEMESTRE} & \textbf{SEG} & \textbf{TER} & \textbf{QUA} & \textbf{QUI} & \textbf{SEX} & \textbf{SÁB} \\ \hline
-1º & %s & %s & %s & %s & %s & %s \\ \hline
-2º & %s & %s & %s & %s & %s & %s \\ \hline
-\multicolumn{6}{|c|}{\small \textbf{Total de dias efetivos de atividades acadêmicas:}}              & %s            \\ \hline
-\end{tabular}
-}
-\end{table}
-\newline
-\null
-\newline
-\end{center}
-\vfill
-\null
-\columnbreak
-~
-\vfill
-\begin{center}
-\large \textbf{DATAS IMPORTANTES PARA OS CURSOS DO CALEM}
-\newline
-\null
-\newline
-\begin{table}
-\centering
-\resizebox{0.9\columnwidth}{!}{
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-\textbf{SEMESTRE} & \textbf{\begin{tabular}[c]{@{}c@{}}1ª NOTA\\ BIMESTRAL\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}2ª NOTA \\ BIMESTRAL\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}RESULTADOS\\ FINAIS\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}DIÁRIOS DE\\ CLASSE - DERAC\end{tabular}} \\ \hline
-1º & %s & %s & %s & %s \\ \hline
-2º & %s & %s & %s & %s \\ \hline
-\end{tabular}
-}
-\end{table}
-\newline
-\null
-\newline
-\end{center}
-\vfill
-\null
-\newpage""" % tup2
-				else:
-					string+= r"\textbf{Informações sobre datas Calem entrar em contato com a coordenação} \newpage"
-
-				string+= r"\onespacing \small \section{\color{hmcorange}Feriados, Recessos e Férias}"
+								string+= r"\subsection{%s \hfill %s dias letivos}" % (calendario[str(letivos.mes)], letivos.dia)
+								substring = [ativ for ativ in atividades_ordenadas if ativ.mes == letivos.mes]
+								flag = 0
+								
+								if substring:
+									for index, i in enumerate(substring):
+										if index == 0:
+											string += str(i)
+										else: 
+											string = string[:-5] + str(i)
+									string = string[:-14]
+								else:
+									string += r' \null \newline '
+						tabelax = cal.tabela1 + cal.tabela2
+						tup2 = tuple(tabelax.split(';')[:-1])
+						string+= r"""\newpage
+	~
+	\vfill
+	\begin{center}
+	\large \textbf{DIAS LETIVOS DOS CURSOS DO CALEM}
+	\newline
+	\null
+	\newline
+	\begin{table}
+	\centering
+	\resizebox{0.7\columnwidth}{!}{
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+	\hline
+	\textbf{SEMESTRE} & \textbf{SEG} & \textbf{TER} & \textbf{QUA} & \textbf{QUI} & \textbf{SEX} & \textbf{SÁB} \\ \hline
+	1º & %s & %s & %s & %s & %s & %s \\ \hline
+	2º & %s & %s & %s & %s & %s & %s \\ \hline
+	\multicolumn{6}{|c|}{\small \textbf{Total de dias efetivos de atividades acadêmicas:}}              & %s            \\ \hline
+	\end{tabular}
+	}
+	\end{table}
+	\newline
+	\null
+	\newline
+	\end{center}
+	\vfill
+	\null
+	\columnbreak
+	~
+	\vfill
+	\begin{center}
+	\large \textbf{DATAS IMPORTANTES PARA OS CURSOS DO CALEM}
+	\newline
+	\null
+	\newline
+	\begin{table}
+	\centering
+	\resizebox{0.9\columnwidth}{!}{
+	\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	\textbf{SEMESTRE} & \textbf{\begin{tabular}[c]{@{}c@{}}1ª NOTA\\ BIMESTRAL\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}2ª NOTA \\ BIMESTRAL\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}RESULTADOS\\ FINAIS\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}DIÁRIOS DE\\ CLASSE - DERAC\end{tabular}} \\ \hline
+	1º & %s & %s & %s & %s \\ \hline
+	2º & %s & %s & %s & %s \\ \hline
+	\end{tabular}
+	}
+	\end{table}
+	\newline
+	\null
+	\newline
+	\end{center}
+	\vfill
+	\null
+	\newpage""" % tup2
+				
 				try:
 					ordenados = sorted([feriados for feriados in city.ferias if feriados.ano == ano])
 					mes_atual = 0
-					
+					flag_first = False
 					for it in ordenados:
 						if it.mes > mes_atual:
+							if flag_first:
+								string = string[:-8]
 							string += r"\subsection{%s}" %(calendario[str(it.mes)])
 							mes_atual = it.mes
+							flag_first = True
 						string+= str(it)
 				except:
 					pass
 				string+= r"""\newpage
-\normalsize \section{\color{hmcorange}Atividades E Eventos}"""	
+\section{\color{hmcorange}Atividades E Eventos}"""	
 				try:
 					ordenados = sorted([ativis for ativis in city.atividades if ativis.ano == ano])
 					mes_atual = 0
+					flag_first = False
 					for it in ordenados:
 						if it.mes > mes_atual:
+							if flag_first:
+								string = string[:-8]
 							string += r"\subsection{%s}" %(calendario[str(it.mes)])
 							mes_atual = it.mes
+							flag_first = True
 						string+= str(it)
 				except:
 					pass
-				data_atual = datetime.datetime.today()
-				string+= r""" ~ \vfill \hfill \small \color{hmcorange}Gerado em %s de %s """ %(data_atual.day, calendario[str(data_atual.month)])
+				#data_atual = datetime.datetime.today()
+				#string+= r""" ~ \vfill \hfill \small \color{hmcorange}Gerado em %s de %s """ %(data_atual.day, calendario[str(data_atual.month)])
 				string+= r"""\end{poster}
 \end{document}"""
 				w.write(string.encode('utf-8'))
@@ -515,26 +646,50 @@ def tectable():
 		
 		tabelax = nivel_curso.tabela1 + nivel_curso.tabela2
 		tup2 = tuple(tabelax.split(';')[:-1])
-		if request.method == 'POST':
-			dic = request.form.to_dict()
-			string_table = ""
-			for key in range(0, 13):
-				keys = 'e' + str(key)
-				string_table += str(dic[keys]) + ';'
-			nivel_curso.tabela1 = string_table
+		lista_tecnico_anual = ['campo mourão', 'pato branco']
+		log = session['login']
+		if log in lista_tecnico_anual:
+			if request.method == 'POST':
+				dic = request.form.to_dict()
+				string_table = ""
+				for key in range(0, 13):
+					keys = 'e' + str(key)
+					string_table += str(dic[keys]) + ';'
+				nivel_curso.tabela1 = string_table
 
-			string_table2 = ""
-			for key in range(0, 8):
-				keys = 'a' + str(key)
-				string_table2 += str(dic[keys]) + ';'
-			nivel_curso.tabela2 = string_table2
-			try:
-				db.session.commit()
-			except:
-				db.session.rollback()
-			return redirect(url_for('controle'))
+				string_table2 = ""
+				for key in range(0, 6):
+					keys = 'a' + str(key)
+					string_table2 += str(dic[keys]) + ';'
+				nivel_curso.tabela2 = string_table2
+				try:
+					db.session.commit()
+				except:
+					db.session.rollback()
+				return redirect(url_for('controle'))
 
-		return render_template('tecnico_table.html', title=titulo, tup=tup2)
+			return render_template('tecnico_anual_table.html', title=titulo, tup=tup2)
+		else:
+			if request.method == 'POST':
+				dic = request.form.to_dict()
+				string_table = ""
+				for key in range(0, 13):
+					keys = 'e' + str(key)
+					string_table += str(dic[keys]) + ';'
+				nivel_curso.tabela1 = string_table
+
+				string_table2 = ""
+				for key in range(0, 8):
+					keys = 'a' + str(key)
+					string_table2 += str(dic[keys]) + ';'
+				nivel_curso.tabela2 = string_table2
+				try:
+					db.session.commit()
+				except:
+					db.session.rollback()
+				return redirect(url_for('controle'))
+
+			return render_template('tecnico_table.html', title=titulo, tup=tup2)
 	else:
 		return redirect(url_for('home'))
 

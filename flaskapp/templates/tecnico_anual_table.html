@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+        <title> {{ title }} </title>
+    {% else %}
+        <title>Tabela Tecnico Integrado</title>
+    {% endif %}
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        .table {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.table thead tr{
+    background-color:lavender;
+    border: 1px solid #ddd;
+}
+
+.table thead tr th{
+    border: 1px solid #ddd;
+}
+
+
+.table {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+    margin: 2px 1px;
+    cursor: pointer;
+}
+
+.table tr td{
+     border: 1px solid #ddd;
+}
+    </style>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+</head>
+<body>
+<form class="form-inline" method="POST">
+  <div class="container">
+	<div class="row">
+		<h2>Preencha as tabelas!</h2>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Semestre</th>
+        <th>SEG</th>
+        <th>TER</th>
+        <th>QUA</th>
+        <th>QUI</th>
+        <th>SEX</th>
+        <th>SÁB</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr align="center">
+        <td>1º</td>
+        <td data-name="desc">
+            <input type="text" name="e0" required="True" value="{{ tup[0] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e1" required="True" value="{{ tup[1] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e2" required="True" value="{{ tup[2] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e3" required="True" value="{{ tup[3] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e4" required="True" value="{{ tup[4] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e5" required="True" value="{{ tup[5] }}">
+        </td>
+      </tr>
+      <tr align="center">
+        <td>2º</td>
+        <td data-name="desc">
+            <input type="text" name="e6" required="True" value="{{ tup[6] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e7" required="True" value="{{ tup[7] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e8" required="True" value="{{ tup[8] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e9" required="True" value="{{ tup[9] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e10" required="True" value="{{ tup[10] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="e11" required="True" value="{{ tup[11] }}">
+        </td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th colspan="2">Total de Dias Efetivos de Atividades Acadêmicas:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td colspan="2">
+          <input type="text" name="e12" required="True" value="{{ tup[12] }}">
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+    <h2> </h2>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>1ª NOTA BIMESTRAL</th>
+        <th>2ª NOTA BIMESTRAL</th>
+        <th>3ª NOTA BIMESTRAL</th>
+        <th>4ª NOTA BIMESTRAL</th>
+        <th>TÉRMINO DO ANO LETIVO</th>
+        <th>RESULTADO FINAL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <tbody>
+      <tr align="center">
+        <td data-name="desc">
+            <input type="text" name="a0" required="True" value="{{ tup[13] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="a1" required="True" value="{{ tup[14] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="a2" required="True" value="{{ tup[15] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="a3" required="True" value="{{ tup[16] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="a4" required="True" value="{{ tup[17] }}">
+        </td>
+        <td data-name="desc">
+            <input type="text" name="a5" required="True" value="{{ tup[18] }}">
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+        <tr align="center">
+            <th>
+                <input type="submit" name="submit" value="Salvar tabelas" class="btn btn-warning">
+            </th>
+        </tr>
+    </tfoot>
+  </table>
+	</div>
+  </div>
+
+</form>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
