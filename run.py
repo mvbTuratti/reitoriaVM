@@ -9,7 +9,7 @@ if __name__ == '__main__':
 #Para colocar em produção ative esse módulo, NÃO é recomendado o port 80, se você souber mexer com firewall
 # para redirecionar para outro port a mudança deve ser feita no parâmetro 'port'
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port=80, debug=True)
+	app.run(host='0.0.0.0', port=80)
 """
 
 

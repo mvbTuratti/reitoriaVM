@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.13)  27 MAY 2020 18:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.13)  29 MAY 2020 19:05
 entering extended mode
 **./curitiba.tex
 (curitiba.tex
@@ -433,7 +433,76 @@ LaTeX Font Info:    Trying to load font information for OT1+phv on input line 2
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 60.7998pt on input line 20.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 45.59985pt on input line 20.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 ...eiro \hfill 0 dias letivos} \null \newline
+                                                   \subsection{Março \hfill...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 2
+0.
+(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+)
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 2
+2.
+
+(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
+(Font)              scaled to size 60.7998pt on input line 22.
+LaTeX Font Info:    Calculating math sizes for size <36> on input line 23.
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
+23.
+
+(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\omlzplm.fd
+File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
+23.
+
+(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\omszplm.fd
+File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
+23.
+
+(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\omxzplm.fd
+File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+)
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
+23.
+
+(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\ot1zplm.fd
+File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+)
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.23 ...nho \hfill 23 dias letivos} \null \newline
+                                                   \subsection{Julho \hfill ...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
 
 
 pdfTeX warning: pdflatex (file ./utfpr.pdf): PDF inclusion: found PDF version <
@@ -441,43 +510,19 @@ pdfTeX warning: pdflatex (file ./utfpr.pdf): PDF inclusion: found PDF version <
 <utfpr.pdf, id=1, 320.19624pt x 142.5325pt>
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 20.
+Package pdftex.def Info: utfpr.pdf  used on input line 24.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 [][] 
  []
 
-LaTeX Font Info:    Calculating math sizes for size <36> on input line 20.
-LaTeX Font Info:    Trying to load font information for OML+zplm on input line 
-20.
-(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\omlzplm.fd
-File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
-)
-LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 
-20.
-
-(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\omszplm.fd
-File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
-)
-LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 
-20.
-
-(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\omxzplm.fd
-File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
-)
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 
-20.
-
-(C:\Users\T-Gamer\AppData\Roaming\MiKTeX\2.9\tex/latex/psnfss\ot1zplm.fd
-File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-)
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 60.7998pt on input line 20.
+(Font)              scaled to size 60.7998pt on input line 24.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 94.9997pt on input line 20.
+(Font)              scaled to size 94.9997pt on input line 24.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 94.9997pt on input line 20.
+(Font)              scaled to size 94.9997pt on input line 24.
 
 
 pdfTeX warning: pdflatex (file ./hmcmath-hexen-logo.pdf): PDF inclusion: found 
@@ -485,16 +530,14 @@ PDF version <1.7>, but at most version <1.5> allowed
 <hmcmath-hexen-logo.pdf, id=2, 232.36812pt x 75.28125pt>
 File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
 <use hmcmath-hexen-logo.pdf>
-Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 20.
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 24.
 (pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [1{C:/Users/T-Gamer/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
  <./utfpr.pdf> <./hmcmath-hexen-logo.pdf>]
-LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 60.7998pt on input line 21.
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 23.
+Package pdftex.def Info: utfpr.pdf  used on input line 28.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
@@ -503,31 +546,226 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 
 File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
 <use hmcmath-hexen-logo.pdf>
-Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 23.
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 28.
 (pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
-[2] (curitiba.aux)
+[2]
+LaTeX Font Info:    Calculating math sizes for size <48> on input line 46.
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 79.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 79.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[3]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.81  \newline
+              \textbf{16}\qquad Início do período para solicitação de co...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 86.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 86.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[4]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 ...bro \hfill 20 dias letivos} \null \newline
+                                                   \vfill\null
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 92.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 92.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[5]
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 142.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 142.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[6]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.142 ...iro \hfill 0 dias letivos} \null \newline
+                                                   \subsection{Março \hfill...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.142 ...il \hfill 22 dias letivos} \null \newline
+                                                   \vfill\null
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 150.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 150.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[7]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.151 ...ro \hfill 24 dias letivos} \null \newline
+                                                   \subsection{Outubro \hfil...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 155.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 155.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[8]
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 206.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 206.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[9]
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 206.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 206.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[10]
+File: utfpr.pdf Graphic file (type pdf)
+<use utfpr.pdf>
+Package pdftex.def Info: utfpr.pdf  used on input line 209.
+(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
+
+Overfull \hbox (433.63655pt too wide) has occurred while \output is active
+[][] 
+ []
+
+File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
+<use hmcmath-hexen-logo.pdf>
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 209.
+(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
+[11] (curitiba.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 11.12pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 4945 strings out of 480930
- 73899 string characters out of 2909541
- 322086 words of memory out of 3000000
- 20739 multiletter control sequences out of 15000+200000
- 550380 words of font info for 59 fonts, out of 3000000 for 9000
+ 5033 strings out of 480930
+ 75233 string characters out of 2909541
+ 324086 words of memory out of 3000000
+ 20812 multiletter control sequences out of 15000+200000
+ 560284 words of font info for 85 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,20n,50p,1854b,578s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,20n,50p,1812b,582s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/T-Gamer/Ap
 pData/Roaming/MiKTeX/2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/T-Gamer/
 AppData/Roaming/MiKTeX/2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/T-Game
 r/AppData/Roaming/MiKTeX/2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/T-Ga
 mer/AppData/Roaming/MiKTeX/2.9/fonts/type1/urw/palatino/uplbi8a.pfb><C:/Users/T
 -Gamer/AppData/Roaming/MiKTeX/2.9/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on curitiba.pdf (2 pages, 87573 bytes).
+Output written on curitiba.pdf (11 pages, 112911 bytes).
 PDF statistics:
- 38 PDF objects out of 1000 (max. 8388607)
+ 67 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

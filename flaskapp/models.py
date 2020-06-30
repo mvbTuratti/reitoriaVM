@@ -58,7 +58,7 @@ class Eventos(db.Model):
 	flag = db.Column(db.Boolean, nullable=False)
 
 	def __repr__(self):
-		return r"\textbf{%.2d}\qquad %s \newline \null" %(self.dia, self.comentario)
+		return r"\textbf{%.2d}\qquad %s \newline" %(self.dia, self.comentario)
 
 	def __lt__(self, outro):
 		if self.mes == outro.mes:
