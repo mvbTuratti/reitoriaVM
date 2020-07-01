@@ -1364,11 +1364,19 @@ def atividades():
 	else:
 		return redirect(url_for('home'))
 
+"""
+	* Método que trata das tabelas de edições de quantidade de dias de atividade acadêmica, conforme ref [a definir].
+	* Na página carregada só é carregado uma tabela de duas colunas e 12 linhas, referentes a associação de mês com um número de dias (máximo 31)
+"""	
 @app.route('/dias', methods=['POST', 'GET'])
 def dias():
+	#checa se está logado através de cookies coletados
 	if 'login' in session:
+		#cria uma instância de objeto que é a do campus logado
 		city = Campi.query.filter_by(cidade=session['login'])[0]
+		#coleta a data atual
 		data_atual = datetime.datetime.today()
+		#esse método é usado pelas três modalidades existentes num campus, aqui filtra através de cookies qual foi selecionado no botão da página 'controle'
 		if 'tabela' in session:
 			tab = session['tabela']
 			if tab == 'graduacao':
@@ -1377,14 +1385,19 @@ def dias():
 				nivel_curso = city.tecnico[0]
 			elif tab == 'calem':
 				nivel_curso = city.calem[0]
-				
+			#filtra com base no ano do acesso do site	
 			try:
 				dias_letivos = sorted([dia for dia in nivel_curso.dias if dia.ano == data_atual.year])
 			except:
 				return redirect(url_for('controle'))
 			try:
+				#aqui trata o caso em que uma mudança está sendo feita nas informações já carregadas pela página, isso só ocorre quando o botão
+				#de atualizar informações é ativo
 				if request.method == 'POST':
+					#confirma que o botão foi selecionado
 					if request.form.get('atualizarbdd'):
+						#todos os itens filtrados previamente são excluídos, pois os novos estão atualmente carregados no dicionário do flask
+						#obtidos na página .html, portanto deleta todos os itens desatualizados resgatados no início do acesso da página
 						for ativ in dias_letivos:
 							db.session.delete(ativ)
 						try:
@@ -1392,33 +1405,44 @@ def dias():
 						except:
 							db.session.rollback()
 						try:
+							#com base nos itens recolhidos pelo dicionário, serão preenchidas as novas informações
 							for idx in range(1, 13):
 								d = "dia" + str(idx)
 								
 								d = request.form.get(d)
+								#para criar uma nova chave única para a tabela, cheque o último valor numérico salvo até então e some 1 a ele
 								try:
 									idd = Letivos.query.all()[-1].id + 1
+								#caso não tenha é porquê não há itens na tabela, portanto é o primeiro item de valor 1.
 								except:
 									idd = 1
-								
+								#cria um dicionário com as informações recolhidas até então
 
 								var_dic = {'id':idd, 'dia':d, 'mes':idx}
+								#checa qual é o cookie usado para adicionar ao dicionário o campo de chave externa adequado
 								if tab == 'graduacao':
 									var_dic.update({'graduacao_id': str(nivel_curso)})
 								elif tab == 'tecnico':
 									var_dic.update({'tecnico_id': str(nivel_curso)})
 								elif tab == 'calem':
 									var_dic.update({'calem_id': str(nivel_curso)})
+								#finaliza com a informação do ano atual de acesso
 								var_dic.update({'ano':data_atual.year})
-							
+								#com todas as informações coletadas no dicionário, use-o para criar uma instância de objeto Letivo
+								#e adicione-o na fila para updates no banco de dados
 								db.session.add(Letivos(**var_dic))
 								try:
+									#como é um loop e podem ter multiplos acessos, já faz o commit aqui para garantir que não haja conflito de informações
+									#como número de chave única
 									db.session.commit()
 								except:
 									pass
+							#após a atualização volta para controle
 							return redirect(url_for('controle'))
 						except:
 							db.session.rollback()
+				#dict comprehension para enviar as informações resgatadas no banco de dados de forma compacta para o Jinja2 no .html
+				#sendo esse dicionário utilizado como opções de default
 				mydic = {item.mes:item.dia for item in dias_letivos}
 				
 				return render_template('dias.html', days=range(0,32), quantidade=range(1,13), meses=mydic, conv=calendario)
