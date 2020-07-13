@@ -731,12 +731,13 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 """ 
 	* Módulo de reenvio de senha, 
 	* TO-DO
-"""
+	* Complicado de setar variáveis de e-mail
+	
 @app.route('/reenvio', methods=['POST', 'GET'])
 def reenvio():
 	if request.method == 'POST':
 		return redirect(url_for('home'))
-	return render_template('reenvio.html')
+	return render_template('reenvio.html')"""
 
 """
 	* Método que trata quando uma tentativa de login da errado, é extremamente similar ao padrão, porém carrega uma .html que não tem efeito
@@ -1105,9 +1106,9 @@ def atividades_academicas():
 					#de eles editarem posteriormente.
 					#caso seja um evento criado pela DIREGEA e não seja editável ele é salvo com a tag 'des%s' e esse tipo é um input hidden
 					if evento.flag:
-						a = latex_to_html(pat=r'\\textbf{([\s\w_]+)}', sentence=evento.comentario)
-						b = latex_to_html(pat=r'\\underline{([\s\w_]+)}', sentence=a)
-						html_string = latex_to_html(pat=r'\\textit{([\s\w_]+)}', sentence=b)
+						a = latex_to_html(pat=r'\\textbf{(.*?)}', sentence=evento.comentario)
+						b = latex_to_html(pat=r'\\underline{(.*?)}', sentence=a)
+						html_string = latex_to_html(pat=r'\\textit{(.*?)}', sentence=b)
 
 						string+= r"""
 							<td data-name="des">
@@ -1325,9 +1326,9 @@ def atividades():
 						#de eles editarem posteriormente.
 						#caso seja um evento criado pela DIREGEA e não seja editável ele é salvo com a tag 'des%s' e esse tipo é um input hidden
 						if evento.flag:
-							a = latex_to_html(pat=r'\\textbf{([\s\w_]+)}', sentence=evento.comentario)
-							b = latex_to_html(pat=r'\\underline{([\s\w_]+)}', sentence=a)
-							html_string = latex_to_html(pat=r'\\textit{([\s\w_]+)}', sentence=b)
+							a = latex_to_html(pat=r'\\textbf{(.*?)}', sentence=evento.comentario)
+							b = latex_to_html(pat=r'\\underline{(.*?)}', sentence=a)
+							html_string = latex_to_html(pat=r'\\textit{(.*?)}', sentence=b)
 
 							string+= r"""
 								<td data-name="des">
@@ -1605,9 +1606,9 @@ def valores():
 								</select>
 							</td>""" %(i,i,i,str(evento.mes), month,i,evento.dia,evento.dia)
 					if evento.flag:
-						a = latex_to_html(pat=r'\\textbf{([\s\w_]+)}', sentence=evento.comentario)
-						b = latex_to_html(pat=r'\\underline{([\s\w_]+)}', sentence=a)
-						html_string = latex_to_html(pat=r'\\textit{([\s\w_]+)}', sentence=b)
+						a = latex_to_html(pat=r'\\textbf{(.*?)}', sentence=evento.comentario)
+						b = latex_to_html(pat=r'\\underline{(.*?)}', sentence=a)
+						html_string = latex_to_html(pat=r'\\textit{(.*?)}', sentence=b)
 						string+= r"""
 							<td data-name="des">
 								<input type="hidden" name="des%s" value="%s" id="des%s">

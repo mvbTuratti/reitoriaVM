@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.13)  29 MAY 2020 19:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7400 64-bit) (preloaded format=pdflatex 2020.5.13)  13 JUL 2020 17:31
 entering extended mode
 **./curitiba.tex
 (curitiba.tex
@@ -633,36 +633,9 @@ File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
 Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 142.
 (pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [6]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.142 ...iro \hfill 0 dias letivos} \null \newline
-                                                   \subsection{Março \hfill...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.142 ...il \hfill 22 dias letivos} \null \newline
-                                                   \vfill\null
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 150.
+Package pdftex.def Info: utfpr.pdf  used on input line 142.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
@@ -671,26 +644,12 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 
 File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
 <use hmcmath-hexen-logo.pdf>
-Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 150.
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 142.
 (pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
 [7]
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.151 ...ro \hfill 24 dias letivos} \null \newline
-                                                   \subsection{Outubro \hfil...
-
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 File: utfpr.pdf Graphic file (type pdf)
 <use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 155.
+Package pdftex.def Info: utfpr.pdf  used on input line 145.
 (pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
 
 Overfull \hbox (433.63655pt too wide) has occurred while \output is active
@@ -699,51 +658,9 @@ Overfull \hbox (433.63655pt too wide) has occurred while \output is active
 
 File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
 <use hmcmath-hexen-logo.pdf>
-Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 155.
+Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 145.
 (pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
-[8]
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 206.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
-File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
-<use hmcmath-hexen-logo.pdf>
-Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 206.
-(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
-[9]
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 206.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
-File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
-<use hmcmath-hexen-logo.pdf>
-Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 206.
-(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
-[10]
-File: utfpr.pdf Graphic file (type pdf)
-<use utfpr.pdf>
-Package pdftex.def Info: utfpr.pdf  used on input line 209.
-(pdftex.def)             Requested size: 320.19545pt x 142.53214pt.
-
-Overfull \hbox (433.63655pt too wide) has occurred while \output is active
-[][] 
- []
-
-File: hmcmath-hexen-logo.pdf Graphic file (type pdf)
-<use hmcmath-hexen-logo.pdf>
-Package pdftex.def Info: hmcmath-hexen-logo.pdf  used on input line 209.
-(pdftex.def)             Requested size: 232.36754pt x 75.28105pt.
-[11] (curitiba.aux)
+[8] (curitiba.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 11.12pt have occurred.
@@ -756,16 +673,16 @@ Here is how much of TeX's memory you used:
  20812 multiletter control sequences out of 15000+200000
  560284 words of font info for 85 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,20n,50p,1812b,582s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 45i,20n,50p,1811b,582s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/T-Gamer/Ap
 pData/Roaming/MiKTeX/2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/T-Gamer/
 AppData/Roaming/MiKTeX/2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/T-Game
 r/AppData/Roaming/MiKTeX/2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/T-Ga
 mer/AppData/Roaming/MiKTeX/2.9/fonts/type1/urw/palatino/uplbi8a.pfb><C:/Users/T
 -Gamer/AppData/Roaming/MiKTeX/2.9/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on curitiba.pdf (11 pages, 112911 bytes).
+Output written on curitiba.pdf (8 pages, 107841 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
+ 58 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
