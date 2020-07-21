@@ -44,7 +44,7 @@
         <div class="row">
           <div class="col-md-2">
             
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Mudar senha</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaNovaSenha" onclick="mudarSenha()" id="mudarSenha">Mudar senha</a>
           </div>
           <div class="col-md-2 offset-md-4">
             <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Virada de ano</a>
@@ -86,13 +86,16 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          <form class="form-inline" method="POST">
+            <div class="modal-body">
+              <input type="submit" name="feriados" value="Feriados, Recesso e Férias" class="btn btn-warning">
+              <input type="text" name="a0" required="True" value="zero">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
         </div>
       </div>
     </div>
@@ -103,5 +106,81 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    let mybutton = document.getElementById("mudarSenha");
+    function mudarSenha(){
+      const elem1 = document.createElement("div");
+      elem1.setAttribute("class", "modal fade");
+      elem1.setAttribute("id", "janelaNovaSenha");
+      elem1.setAttribute("tabindex", "-1");
+      elem1.setAttribute('role', 'dialog');
+      elem1.setAttribute("aria-labelledby", "janelaNovaSenhaTitle");
+      elem1.setAttribute("aria-hidden","true");
+      const elem2 = document.createElement("div");
+      elem2.setAttribute("class","modal-dialog modal-dialog-centered");
+      elem2.setAttribute("role","document");
+      
+      const elem3 = document.createElement("div");
+      elem3.setAttribute("class","modal-content");
+      const elem4 = document.createElement("div");
+      elem4.setAttribute("class","modal-header");
+      const elem5 = document.createElement("h5");
+      elem5.setAttribute("class","modal-title");
+      elem5.setAttribute("id","janelaNovaSenhaTitle");
+      const elem5Title = document.createTextNode("Modal Title");
+      const close = document.createElement("button");
+      close.setAttribute("type","button");
+      close.setAttribute("class","close");
+      close.setAttribute("data-dismiss","modal");
+      close.setAttribute("aria-label","Close");
+      const spana = document.createElement("span");
+      spana.setAttribute("aria-hidden","true");
+      const times = document.createTextNode("&times;");
+      spana.appendChild(times);
+      close.appendChild(spana);
+      const form = document.createElement("form", {class:"form-inline", method:"POST"});
+      form.setAttribute("class","form-inline");
+      form.setAttribute("method","POST");
+      const form2 = document.createElement("div");
+      form2.setAttribute("class","modal-body");
+      const input1 = document.createElement("input");
+      input1.setAttribute("type","submit");
+      input1.setAttribute("name","feriados");
+      input1.setAttribute("value","Feriados, Ferias");
+      input1.setAttribute("class","btn btn-warning");
+      const input2 = document.createElement("input");
+      input2.setAttribute("value","zero");
+      input2.setAttribute("type","text");
+      input2.setAttribute("name","a0");
+      input2.setAttribute("required","True");
+      const footer = document.createElement("div", {class:"modal-footer"});
+      footer.setAttribute("class","modal-footer");
+      const footer2 = document.createElement("button");
+      footer2.setAttribute("class","btn btn-secondary");
+      footer2.setAttribute("type","button");
+      footer2.setAttribute("data-dismiss","modal");
+      const footer2Close = document.createTextNode("Close");
+      const footer2Save = document.createElement("button");
+      footer2Save.setAttribute("class","btn btn-primary");
+      footer2Save.setAttribute("type","button");
+      const footer2SaveDialog = document.createTextNode("Save Changes");
+      footer2Save.appendChild(footer2SaveDialog);
+      footer.appendChild(footer2Save);
+      footer2.appendChild(footer2Close);
+      footer.appendChild(footer2);
+      form2.appendChild(input1);
+      form2.appendChild(input2);
+      form.appendChild(form2);
+      form.appendChild(footer);
+      elem4.appendChild(form);      
+      elem5.appendChild(close);
+      elem5.appendChild(elem5Title);
+      elem4.appendChild(elem5);
+      elem3.appendChild(elem4);
+      elem2.appendChild(elem3);
+      elem1.appendChild(elem2);
+      document.body.appendChild(elem1);
+      console.log(elem1);
+    }</script>
   </body>
 </html>

@@ -59,6 +59,8 @@ def home():
 			if hashlib.md5(sen.encode()).hexdigest() == encrypted[log]:
 				#adiciona aos cookies qual é o campus logado
 				session['login'] = log
+				if log == "adm":
+					return redirect(url_for('adm'))
 				#sai do método e é redirecionado para controle
 				return redirect(url_for('controle'))
 		#caso login ou senha estejam incorretos a pessoa é redirecionada para o método 'tentativa' isso foi uma gafe da minha parte,
@@ -751,6 +753,8 @@ def tentativa():
 		if  log in encrypted:
 			if hashlib.md5(sen.encode()).hexdigest() == encrypted[log]:
 				session['login'] = log
+				if log == "adm":
+					return redirect(url_for('adm'))
 				return redirect(url_for('controle'))
 		return redirect(url_for('tentativa')) 
 	return render_template('fail.html')
@@ -1637,8 +1641,13 @@ def valores():
 	else:
 		return redirect(url_for('home'))
 
-"""
+
 @app.route('/adm', methods=['POST', 'GET'])
 def adm():
 	if 'login' in session:
-"""	
+		if request.method == 'POST':
+			#caso o site receba um formulário de postagem, recupera o dicionário do html (que tem salvo objetos com nomes e valores, sendo
+			# esses valores previamente editados pelo usuário)
+			dic = request.form.to_dict()
+			print(dic)
+		return render_template("adm.html")	
