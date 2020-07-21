@@ -1636,3 +1636,9 @@ def valores():
 			return redirect(url_for('controle'))
 	else:
 		return redirect(url_for('home'))
+
+"""
+@app.route('/adm', methods=['POST', 'GET'])
+def adm():
+	if 'login' in session:
+"""	
