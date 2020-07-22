@@ -31,6 +31,14 @@
   h1 {
   color: #ebecd3;
   }
+  div.b {
+    width: 500px;
+    height: 200px;
+  }
+  div.c {
+    width: 480px;
+    height: 50px;
+  }
 	
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -43,62 +51,40 @@
       
         <div class="row">
           <div class="col-md-2">
-            
             <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaNovaSenha" onclick="mudarSenha()" id="mudarSenha">Mudar senha</a>
           </div>
           <div class="col-md-2 offset-md-4">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Virada de ano</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaViradaDeAno" onclick="viradaDeAno()">Virada de ano</a>
           </div>
         </div>
         <div class="row">
           <div class="col-md-2 ">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Criar Evento</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaCriarEvento" onclick="criarEvento()">Criar Evento</a>
           </div>
           <div class="col-md-4 offset-md-4">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Excluir Evento</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaExcluirEvento" onclick="excluirEvento()">Excluir Evento</a>
           </div>
         </div>
         <div class="row">
           <div class="col-md-2 ">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Criar Férias</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaCriarFerias" onclick="criarFerias()">Criar Férias</a>
           </div>
           <div class="col-md-4 offset-md-4">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Excluir Férias</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaExcluirFerias" onclick="excluirFerias()">Excluir Férias</a>
           </div>
         </div>
         <div class="row">
           <div class="col-md-2 ">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Criar Atividades</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaCriarAtividades" onclick="criarAtividades()">Criar Atividades</a>
           </div>
           <div class="col-md-4 offset-md-4">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#exampleModalCenter">Excluir Atividades</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaExcluirAtividades" onclick="excluirAtividades()">Excluir Atividades</a>
           </div>
         </div>
+        
       
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form class="form-inline" method="POST">
-            <div class="modal-body">
-              <input type="submit" name="feriados" value="Feriados, Recesso e Férias" class="btn btn-warning">
-              <input type="text" name="a0" required="True" value="zero">
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </form>
-        </div>
-      </div>
-    </div>
+    
   </div>
 
     <!-- Optional JavaScript -->
@@ -107,9 +93,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    let mybutton = document.getElementById("mudarSenha");
+    if ({{ info | tojson }}){
+      document.getElementById("mudarSenha").click();
+    }
+    
 
-    function generico(nome, botoes){
+    function generico(nome, titulo, botoes){
       const elem1 = document.createElement("div");
       elem1.setAttribute("class", "modal fade");
       elem1.setAttribute("id", nome);
@@ -128,7 +117,7 @@
       const elem5 = document.createElement("h5");
       elem5.setAttribute("class","modal-title");
       elem5.setAttribute("id","janelaNovaSenhaTitle");
-      const elem5Title = document.createTextNode("Modal Title");
+      const elem5Title = document.createTextNode(titulo);
       const close = document.createElement("button");
       close.setAttribute("type","button");
       close.setAttribute("class","close");
@@ -178,21 +167,142 @@
       elem2.appendChild(form);
       elem1.appendChild(elem2);
       document.body.appendChild(elem1);
-      console.log(elem1);
+      
+    }
+    function middleDiv(){
+      const divs = document.createElement("div");
+      divs.setAttribute("class","b");
+      const dropDown = document.createElement("select");
+      dropDown.setAttribute("name","campusId");
+      dropDown.setAttribute("id", "campusNome0");
+      const arrayCampus = {{ campus | tojson }};
+      const arrayOptions = new Array(arrayCampus.length);
+      
+      for (let i = 0; i<arrayCampus.length; i++){
+        arrayOptions[i] = document.createElement("option");
+        arrayOptions[i].setAttribute("value", arrayCampus[i]);
+        let txt = document.createTextNode(arrayCampus[i]);
+        arrayOptions[i].appendChild(txt);
+        dropDown.appendChild(arrayOptions[i]);
+      }
+      const lbl = document.createElement("label");
+      lbl.setAttribute("for", "campusId");
+      const txtAviso = document.createTextNode("Selecione o Campus");
+      lbl.appendChild(txtAviso);
+      const divisorMeio = document.createElement("div");
+      divisorMeio.setAttribute("class", "form-group");
+      const spanner = document.createElement("span");
+      spanner.setAttribute("style", "white-space: nowrap");
+
+      spanner.appendChild(lbl);
+      spanner.appendChild(dropDown);
+      divisorMeio.appendChild(spanner);
+      divs.appendChild(divisorMeio);
+      return divs;
     }
     function mudarSenha(){
+      const mod = middleDiv();
+      const localDiv = document.createElement("div");
+      localDiv.setAttribute("class", "c");
+      const txtExempla = document.createElement("h8");
+      const addTxt = document.createTextNode("Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro");
+      txtExempla.appendChild(addTxt);
+      localDiv.appendChild(txtExempla);
+      mod.appendChild(localDiv);
+      generico("janelaNovaSenha", "Mudar Senha",[mod]);
+    }
+    function viradaDeAno(){
       const input1 = document.createElement("input");
       input1.setAttribute("type","submit");
       input1.setAttribute("name","feriados");
-      input1.setAttribute("value","Feriados");
+      input1.setAttribute("value","Virada de Ano");
       input1.setAttribute("class","btn btn-warning");
       const input2 = document.createElement("input");
       input2.setAttribute("value","zero");
       input2.setAttribute("type","text");
       input2.setAttribute("name","a0");
       input2.setAttribute("required","True");
-      generico("janelaNovaSenha", [input1, input2]);
+      generico("janelaViradaDeAno", "Virada de Ano",[input1, input2]);
     }
+    function criarEvento(){
+      const input1 = document.createElement("input");
+      input1.setAttribute("type","submit");
+      input1.setAttribute("name","feriados");
+      input1.setAttribute("value","Criar Evento");
+      input1.setAttribute("class","btn btn-warning");
+      const input2 = document.createElement("input");
+      input2.setAttribute("value","zero");
+      input2.setAttribute("type","text");
+      input2.setAttribute("name","a0");
+      input2.setAttribute("required","True");
+      generico("janelaCriarEvento", "Criar Evento",[input1, input2]);
+    }
+    function excluirEvento(){
+      const input1 = document.createElement("input");
+      input1.setAttribute("type","submit");
+      input1.setAttribute("name","feriados");
+      input1.setAttribute("value","Excluir Evento");
+      input1.setAttribute("class","btn btn-warning");
+      const input2 = document.createElement("input");
+      input2.setAttribute("value","zero");
+      input2.setAttribute("type","text");
+      input2.setAttribute("name","a0");
+      input2.setAttribute("required","True");
+      generico("janelaExcluirEvento", "Excluir Eventos",[input1, input2]);
+    }
+    function criarFerias(){
+      const input1 = document.createElement("input");
+      input1.setAttribute("type","submit");
+      input1.setAttribute("name","feriados");
+      input1.setAttribute("value","Criar Ferias");
+      input1.setAttribute("class","btn btn-warning");
+      const input2 = document.createElement("input");
+      input2.setAttribute("value","zero");
+      input2.setAttribute("type","text");
+      input2.setAttribute("name","a0");
+      input2.setAttribute("required","True");
+      generico("janelaCriarFerias", "Criar Férias",[input1, input2]);
+    }
+    function excluirFerias(){
+      const input1 = document.createElement("input");
+      input1.setAttribute("type","submit");
+      input1.setAttribute("name","feriados");
+      input1.setAttribute("value","Excluir Ferias");
+      input1.setAttribute("class","btn btn-warning");
+      const input2 = document.createElement("input");
+      input2.setAttribute("value","zero");
+      input2.setAttribute("type","text");
+      input2.setAttribute("name","a0");
+      input2.setAttribute("required","True");
+      generico("janelaExcluirFerias", "Excluir Férias",[input1, input2]);
+    }
+    function criarAtividades(){
+      const input1 = document.createElement("input");
+      input1.setAttribute("type","submit");
+      input1.setAttribute("name","feriados");
+      input1.setAttribute("value","Criar Atividades");
+      input1.setAttribute("class","btn btn-warning");
+      const input2 = document.createElement("input");
+      input2.setAttribute("value","zero");
+      input2.setAttribute("type","text");
+      input2.setAttribute("name","a0");
+      input2.setAttribute("required","True");
+      generico("janelaCriarAtividades", "Criar Atividades",[input1, input2]);
+    }
+    function excluirAtividades(){
+      const input1 = document.createElement("input");
+      input1.setAttribute("type","submit");
+      input1.setAttribute("name","feriados");
+      input1.setAttribute("value","Excluir Atividades");
+      input1.setAttribute("class","btn btn-warning");
+      const input2 = document.createElement("input");
+      input2.setAttribute("value","zero");
+      input2.setAttribute("type","text");
+      input2.setAttribute("name","a0");
+      input2.setAttribute("required","True");
+      generico("janelaExcluirAtividades", "Excluir Atividades",[input1, input2]);
+    }
+
   </script>
   </body>
 </html>

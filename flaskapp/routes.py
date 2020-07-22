@@ -1645,9 +1645,11 @@ def valores():
 @app.route('/adm', methods=['POST', 'GET'])
 def adm():
 	if 'login' in session:
+		
 		if request.method == 'POST':
 			#caso o site receba um formulário de postagem, recupera o dicionário do html (que tem salvo objetos com nomes e valores, sendo
 			# esses valores previamente editados pelo usuário)
 			dic = request.form.to_dict()
 			print(dic)
-		return render_template("adm.html")	
+		campus = [str(c) for c in Campi.query.all()]
+		return render_template("adm.html", campus=campus, info=False)	
