@@ -108,10 +108,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript">
     let mybutton = document.getElementById("mudarSenha");
-    function mudarSenha(){
+
+    function generico(nome, botoes){
       const elem1 = document.createElement("div");
       elem1.setAttribute("class", "modal fade");
-      elem1.setAttribute("id", "janelaNovaSenha");
+      elem1.setAttribute("id", nome);
       elem1.setAttribute("tabindex", "-1");
       elem1.setAttribute('role', 'dialog');
       elem1.setAttribute("aria-labelledby", "janelaNovaSenhaTitle");
@@ -135,52 +136,63 @@
       close.setAttribute("aria-label","Close");
       const spana = document.createElement("span");
       spana.setAttribute("aria-hidden","true");
-      const times = document.createTextNode("&times;");
+      const times = document.createTextNode("X");
       spana.appendChild(times);
       close.appendChild(spana);
-      const form = document.createElement("form", {class:"form-inline", method:"POST"});
+      const form = document.createElement("form");
       form.setAttribute("class","form-inline");
       form.setAttribute("method","POST");
       const form2 = document.createElement("div");
       form2.setAttribute("class","modal-body");
-      const input1 = document.createElement("input");
-      input1.setAttribute("type","submit");
-      input1.setAttribute("name","feriados");
-      input1.setAttribute("value","Feriados, Ferias");
-      input1.setAttribute("class","btn btn-warning");
-      const input2 = document.createElement("input");
-      input2.setAttribute("value","zero");
-      input2.setAttribute("type","text");
-      input2.setAttribute("name","a0");
-      input2.setAttribute("required","True");
-      const footer = document.createElement("div", {class:"modal-footer"});
+      
+      const footer = document.createElement("div");
       footer.setAttribute("class","modal-footer");
       const footer2 = document.createElement("button");
       footer2.setAttribute("class","btn btn-secondary");
       footer2.setAttribute("type","button");
       footer2.setAttribute("data-dismiss","modal");
       const footer2Close = document.createTextNode("Close");
-      const footer2Save = document.createElement("button");
+      const footer2Save = document.createElement("input");
       footer2Save.setAttribute("class","btn btn-primary");
-      footer2Save.setAttribute("type","button");
-      const footer2SaveDialog = document.createTextNode("Save Changes");
-      footer2Save.appendChild(footer2SaveDialog);
+      footer2Save.setAttribute("type","submit");
+      footer2Save.setAttribute("value", "Salvar")
+      
       footer.appendChild(footer2Save);
       footer2.appendChild(footer2Close);
       footer.appendChild(footer2);
-      form2.appendChild(input1);
-      form2.appendChild(input2);
-      form.appendChild(form2);
-      form.appendChild(footer);
-      elem4.appendChild(form);      
-      elem5.appendChild(close);
+      
+      for (inputers of botoes){
+        form2.appendChild(inputers);
+      }
+      
+            
+      
       elem5.appendChild(elem5Title);
       elem4.appendChild(elem5);
+      elem4.appendChild(close);
+      
       elem3.appendChild(elem4);
-      elem2.appendChild(elem3);
+      elem3.appendChild(form2);
+      elem3.appendChild(footer);
+      form.appendChild(elem3);
+      elem2.appendChild(form);
       elem1.appendChild(elem2);
       document.body.appendChild(elem1);
       console.log(elem1);
-    }</script>
+    }
+    function mudarSenha(){
+      const input1 = document.createElement("input");
+      input1.setAttribute("type","submit");
+      input1.setAttribute("name","feriados");
+      input1.setAttribute("value","Feriados");
+      input1.setAttribute("class","btn btn-warning");
+      const input2 = document.createElement("input");
+      input2.setAttribute("value","zero");
+      input2.setAttribute("type","text");
+      input2.setAttribute("name","a0");
+      input2.setAttribute("required","True");
+      generico("janelaNovaSenha", [input1, input2]);
+    }
+  </script>
   </body>
 </html>
