@@ -37,7 +37,7 @@ simplificador_nomes = {
 }
 
 #dict comprehension de todos os campus com login e senha HASHEADA dentro da tabela Campi do banco de dados
-encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()])
+#encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()])
 
 """
 	* Rota inicial do site, a primeira linha limpa todos e qualquer cookies salvos na sessão, ou seja, caso a pessoa volte para a url inicial
@@ -46,6 +46,9 @@ encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()]
 @app.route('/', methods=['POST', 'GET'])
 def home():
 	session.clear()
+	
+	encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()])
+	print(encrypted)
 	#caso seja clicado no botão do site o site recebe um form request que valida esse if, do contrário é exposto ao usuário o arquivo home.html
 	#no primeiro acesso à página não há form request, portanto é falso e só será aberto o html
 	if request.method=='POST':
@@ -747,6 +750,9 @@ def reenvio():
 """
 @app.route('/tentativa', methods=['POST', 'GET'])
 def tentativa():
+	
+	encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()])
+	print(encrypted)
 	if request.method == 'POST':
 		log = request.form['login']
 		sen = request.form['senha']
@@ -1651,5 +1657,19 @@ def adm():
 			# esses valores previamente editados pelo usuário)
 			dic = request.form.to_dict()
 			print(dic)
+			try:
+				if dic["nomeDoBotao"] == "mudarSenha":
+					campi = Campi.query.filter_by(cidade=dic["campusId"])[0]
+					senhaNova = hashlib.md5(dic["novaSenha"].encode()).hexdigest()
+					print("campi senha antiga = " + campi.senha)
+					print("campi senha nova = " + senhaNova)
+					campi.senha = senhaNova
+					
+					db.session.commit()
+			except:
+				db.session.rollback()
+				return render_template("adm.html", campus=campus, semSenha=True)
 		campus = [str(c) for c in Campi.query.all()]
-		return render_template("adm.html", campus=campus, info=False)	
+		sra = Campi.query.filter_by(cidade="adm")[0]
+		print("senha 'atualizada': " + sra.senha)
+		return render_template("adm.html", campus=campus, semSenha=False)	

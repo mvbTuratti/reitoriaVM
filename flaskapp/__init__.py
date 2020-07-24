@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-
 #inicialização de flask e algumas chaves de segurança, o código ali inserido foi gerado aleatóriamente pela função hash do python 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'e59d86e807f40bafb20cca686aebdd04'

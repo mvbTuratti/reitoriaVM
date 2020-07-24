@@ -93,8 +93,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    if ({{ info | tojson }}){
+    if ({{ semSenha | tojson }}){
+      
       document.getElementById("mudarSenha").click();
+      alert("Algum erro ocorreu! Operação não concluida!");
     }
     
 
@@ -169,7 +171,7 @@
       document.body.appendChild(elem1);
       
     }
-    function middleDiv(){
+    function middleDiv(nomeBotao){
       const divs = document.createElement("div");
       divs.setAttribute("class","b");
       const dropDown = document.createElement("select");
@@ -193,22 +195,40 @@
       divisorMeio.setAttribute("class", "form-group");
       const spanner = document.createElement("span");
       spanner.setAttribute("style", "white-space: nowrap");
-
+      const nomeDoBotao = document.createElement("input");
+      nomeDoBotao.setAttribute("type", "hidden");
+      nomeDoBotao.setAttribute("name", "nomeDoBotao");
+      nomeDoBotao.setAttribute("value", nomeBotao);
+      lbl.appendChild(nomeDoBotao);
       spanner.appendChild(lbl);
       spanner.appendChild(dropDown);
       divisorMeio.appendChild(spanner);
       divs.appendChild(divisorMeio);
       return divs;
     }
+    
     function mudarSenha(){
-      const mod = middleDiv();
+      const mod = middleDiv("mudarSenha");
       const localDiv = document.createElement("div");
       localDiv.setAttribute("class", "c");
-      const txtExempla = document.createElement("h8");
-      const addTxt = document.createTextNode("Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro");
-      txtExempla.appendChild(addTxt);
-      localDiv.appendChild(txtExempla);
+      const novaSenha = document.createElement("input");
+      novaSenha.setAttribute("type", "text");
+      novaSenha.setAttribute("required", "true");
+      novaSenha.setAttribute("id","novaSenha");
+      novaSenha.setAttribute("name", "novaSenha");
+      const localDiv2 = document.createElement("div");
+      localDiv2.setAttribute("class", "c");
+      const txtCmp = document.createTextNode("Digite a nova senha");
+      
+      mod.appendChild(localDiv2);
+      mod.appendChild(txtCmp);
+      localDiv.appendChild(novaSenha);
+      console.log(localDiv);
       mod.appendChild(localDiv);
+      
+      
+      
+
       generico("janelaNovaSenha", "Mudar Senha",[mod]);
     }
     function viradaDeAno(){
