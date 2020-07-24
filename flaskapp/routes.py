@@ -38,6 +38,8 @@ simplificador_nomes = {
 
 #dict comprehension de todos os campus com login e senha HASHEADA dentro da tabela Campi do banco de dados
 #encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()])
+#inicialmente era em escala 'global' na aplicação, mas isso causa problemas porque algumas alterações não ficam associadas aos objetos já
+#carregados! Query precisa ser refeita para puxar atualizações na tabela!
 
 """
 	* Rota inicial do site, a primeira linha limpa todos e qualquer cookies salvos na sessão, ou seja, caso a pessoa volte para a url inicial
@@ -46,9 +48,8 @@ simplificador_nomes = {
 @app.route('/', methods=['POST', 'GET'])
 def home():
 	session.clear()
-	
+	#dict comprehension de todos os campus com login e senha HASHEADA dentro da tabela Campi do banco de dados
 	encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()])
-	print(encrypted)
 	#caso seja clicado no botão do site o site recebe um form request que valida esse if, do contrário é exposto ao usuário o arquivo home.html
 	#no primeiro acesso à página não há form request, portanto é falso e só será aberto o html
 	if request.method=='POST':
@@ -750,9 +751,9 @@ def reenvio():
 """
 @app.route('/tentativa', methods=['POST', 'GET'])
 def tentativa():
-	
+	#dict comprehension de todos os campus com login e senha HASHEADA dentro da tabela Campi do banco de dados
 	encrypted = dict([(record.cidade, record.senha) for record in Campi.query.all()])
-	print(encrypted)
+
 	if request.method == 'POST':
 		log = request.form['login']
 		sen = request.form['senha']
@@ -1653,16 +1654,13 @@ def adm():
 	if 'login' in session:
 		
 		if request.method == 'POST':
-			#caso o site receba um formulário de postagem, recupera o dicionário do html (que tem salvo objetos com nomes e valores, sendo
-			# esses valores previamente editados pelo usuário)
+			
 			dic = request.form.to_dict()
 			print(dic)
 			try:
 				if dic["nomeDoBotao"] == "mudarSenha":
 					campi = Campi.query.filter_by(cidade=dic["campusId"])[0]
 					senhaNova = hashlib.md5(dic["novaSenha"].encode()).hexdigest()
-					print("campi senha antiga = " + campi.senha)
-					print("campi senha nova = " + senhaNova)
 					campi.senha = senhaNova
 					
 					db.session.commit()
@@ -1670,6 +1668,4 @@ def adm():
 				db.session.rollback()
 				return render_template("adm.html", campus=campus, semSenha=True)
 		campus = [str(c) for c in Campi.query.all()]
-		sra = Campi.query.filter_by(cidade="adm")[0]
-		print("senha 'atualizada': " + sra.senha)
 		return render_template("adm.html", campus=campus, semSenha=False)	
