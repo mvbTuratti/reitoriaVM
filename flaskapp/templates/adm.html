@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Administrador</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <<link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <style type="text/css">
         body{
@@ -232,17 +232,25 @@
       generico("janelaNovaSenha", "Mudar Senha",[mod]);
     }
     function viradaDeAno(){
-      const input1 = document.createElement("input");
-      input1.setAttribute("type","submit");
-      input1.setAttribute("name","feriados");
-      input1.setAttribute("value","Virada de Ano");
-      input1.setAttribute("class","btn btn-warning");
-      const input2 = document.createElement("input");
-      input2.setAttribute("value","zero");
-      input2.setAttribute("type","text");
-      input2.setAttribute("name","a0");
-      input2.setAttribute("required","True");
-      generico("janelaViradaDeAno", "Virada de Ano",[input1, input2]);
+      const mod1 = document.createElement("div");
+      mod1.setAttribute("class","b");
+      const input1 = document.createElement("select");
+      input1.setAttribute("name","viradaDeAno");
+      input1.setAttribute("id","viradaDeAno");
+      const atrTxt = document.createTextNode("Selecione a opção");
+      input1.appendChild(atrTxt);
+      const inputv1 = document.createElement("option");
+      const atrTxt1 = document.createTextNode("Ano atual para ano que vem");
+      inputv1.setAttribute("value", "proximoAno");
+      inputv1.appendChild(atrTxt1);
+      input1.appendChild(inputv1);
+      const inputv2 = document.createElement("option");
+      const atrTxt2 = document.createTextNode("Ano passado para ano atual");
+      inputv2.setAttribute("value", "atualAno");
+      inputv2.appendChild(atrTxt2);
+      input1.appendChild(inputv2);
+      mod1.appendChild(input1);
+      generico("janelaViradaDeAno", "Virada de Ano",[mod1]);
     }
     function criarEvento(){
       const input1 = document.createElement("input");

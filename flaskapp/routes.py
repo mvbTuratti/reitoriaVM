@@ -1031,7 +1031,7 @@ def atividades_academicas():
 			#Caso não seja um request de botão de atualizar ou deletar é porque a página está sendo carregada pela primeira vez
 			#carrega as atividades filtradas pelo campus e ano de acesso
 			nivel_curso = Campi.query.filter_by(cidade=session['login'])[0].atividades
-			atividades_ordenadas = [eventos_ordenados for eventos_ordenados in sorted(nivel_curso) if eventos_ordenados.ano == data_atual.year]
+			atividades_ordenadas = sorted([eventos_ordenados for eventos_ordenados in nivel_curso if eventos_ordenados.ano == data_atual.year])
 			#o html é mutável com base em novos itens, aqui é carregado os itens salvos anteriormente, itens novos são tratados com javascript
 			#abre um arquivo na pasta de htmls
 			with open(paths, 'wb') as w:
@@ -1280,7 +1280,7 @@ def atividades():
 			#caso não tenha sido acessado através de um botão, a página será carregada normalmente, .html gerado dinamicamente
 			try:
 				#recolhe as atividades com base no campus e no ano de acesso, filtra e ordena
-				atividades_ordenadas = [eventos_ordenados for eventos_ordenados in sorted(nivel_curso) if eventos_ordenados.ano == data_atual.year]
+				atividades_ordenadas = sorted([eventos_ordenados for eventos_ordenados in nivel_curso if eventos_ordenados.ano == data_atual.year])
 				#abre um arquivo de texto para criar o .html a ser carregado pela página
 				with open(paths, 'wb') as w:
 					#carrega o início que será inserido num block herdado de atividades.html
@@ -1548,7 +1548,7 @@ def valores():
 						key = "del" + str(idx)
 						try:
 							dic[key]
-							db.session.delete([eventos_organizados for eventos_organizados in sorted(nivel_curso.atividades) if eventos_organizados.ano == data_atual.year][idx-1])
+							db.session.delete(sorted([eventos_organizados for eventos_organizados in nivel_curso.atividades if eventos_organizados.ano == data_atual.year])[idx-1])
 						except:
 							pass
 					try:
@@ -1657,15 +1657,36 @@ def adm():
 			
 			dic = request.form.to_dict()
 			print(dic)
-			try:
+			if "nomeDoBotao" in dic:
 				if dic["nomeDoBotao"] == "mudarSenha":
 					campi = Campi.query.filter_by(cidade=dic["campusId"])[0]
 					senhaNova = hashlib.md5(dic["novaSenha"].encode()).hexdigest()
 					campi.senha = senhaNova
-					
-					db.session.commit()
-			except:
-				db.session.rollback()
-				return render_template("adm.html", campus=campus, semSenha=True)
+					try:
+						db.session.commit()
+					except:
+						db.session.rollback()
+						return render_template("adm.html", campus=campi, semSenha=True)
+			if "viradaDeAno" in dic:
+				eventos = Eventos.query.all()
+				data_atual = datetime.datetime.today()
+				anoAtual = data_atual.year
+				"""
+				if dic["viradaDeAno"] == "proximoAno":
+					listaAnoAtual = [e for e in eventos if e.ano == anoAtual]
+					for ev in listaAnoAtual:
+						try:
+							db.session.add(Eventos(id=(Eventos.query.all()[-1].id+1), dia=ev.dia, mes=ev.mes, comentario=ev.comentario,
+							tecnico_id=ev.tecnico_id, calem_id=ev.calem_id, graduacao_id=ev.graduacao_id, ano=(ev.ano+1), flag=ev.flag))
+							db.session.commit()
+						except:
+							db.session.rollback()
+							break
+					print(listaAnoAtual[:5])
+				elif dic["viradaDeAno"] == "atualAno":
+					listaAnoPassado = [e for e in eventos if e.ano == (anoAtual-1)]
+					print(listaAnoPassado)
+					print("atual ano")"""
+				
 		campus = [str(c) for c in Campi.query.all()]
 		return render_template("adm.html", campus=campus, semSenha=False)	
