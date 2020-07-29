@@ -87,6 +87,8 @@ def controle():
 		#salva aqui o login do campus, a ideia é manter os campus como nome de usuários, facilita na hora da impressão e diferenciar
 		#os tratamentos entre campus (por exemplo: usar nomes para identificar quais tem técnico anual e qual é semestral para os if's)
 		log = session['login']
+		if (log == "adm"):
+			return redirect(url_for('adm'))
 		#aqui o python recolhe a data em que está sendo utilizado o site, para fins conforme ref [a definir]
 		data_atual = datetime.datetime.today()
 		from collections import namedtuple
@@ -1652,6 +1654,7 @@ def valores():
 @app.route('/adm', methods=['POST', 'GET'])
 def adm():
 	if 'login' in session:
+
 		
 		if request.method == 'POST':
 			
@@ -1666,27 +1669,30 @@ def adm():
 						db.session.commit()
 					except:
 						db.session.rollback()
-						return render_template("adm.html", campus=campi, semSenha=True)
+						return render_template("adm.html", campus=campi, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario)
 			if "viradaDeAno" in dic:
-				eventos = Eventos.query.all()
 				data_atual = datetime.datetime.today()
 				anoAtual = data_atual.year
-				"""
+				
+				from flaskapp.copiadorGenerico import copiadorEventos, copiadorAtividades, copiadorFerias, copiadorLetivo
+				anoOcupado = [False,False,False,False]
+				campus = [str(c) for c in Campi.query.all()]
 				if dic["viradaDeAno"] == "proximoAno":
-					listaAnoAtual = [e for e in eventos if e.ano == anoAtual]
-					for ev in listaAnoAtual:
-						try:
-							db.session.add(Eventos(id=(Eventos.query.all()[-1].id+1), dia=ev.dia, mes=ev.mes, comentario=ev.comentario,
-							tecnico_id=ev.tecnico_id, calem_id=ev.calem_id, graduacao_id=ev.graduacao_id, ano=(ev.ano+1), flag=ev.flag))
-							db.session.commit()
-						except:
-							db.session.rollback()
-							break
-					print(listaAnoAtual[:5])
+					anoOcupado[0] = copiadorEventos(anoAtual, (anoAtual+1))
+					anoOcupado[1] = copiadorAtividades(anoAtual,(anoAtual+1))
+					anoOcupado[2] = copiadorFerias(anoAtual,(anoAtual+1))
+					anoOcupado[3] = copiadorLetivo(anoAtual,(anoAtual+1))
+
 				elif dic["viradaDeAno"] == "atualAno":
-					listaAnoPassado = [e for e in eventos if e.ano == (anoAtual-1)]
-					print(listaAnoPassado)
-					print("atual ano")"""
+					anoOcupado[0] = copiadorEventos((anoAtual-1), anoAtual)
+					anoOcupado[1] = copiadorAtividades((anoAtual-1), anoAtual)
+					anoOcupado[2] = copiadorFerias((anoAtual-1), anoAtual)
+					anoOcupado[3] = copiadorLetivo((anoAtual-1), anoAtual)
+				print(anoOcupado)
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=anoOcupado, dias=[*range(1,32)], meses=calendario)
+				
 				
 		campus = [str(c) for c in Campi.query.all()]
-		return render_template("adm.html", campus=campus, semSenha=False)	
+		return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario)	
+	else:
+		return redirect(url_for('home'))

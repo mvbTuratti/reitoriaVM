@@ -37,7 +37,15 @@
   }
   div.c {
     width: 480px;
-    height: 50px;
+    height: 24px;
+  }
+  div.d{
+    width: 480px;
+    height: 48px;
+  }
+  div.e{
+    width: 480px;
+    height: 12px;
   }
 	
     </style>
@@ -98,8 +106,69 @@
       document.getElementById("mudarSenha").click();
       alert("Algum erro ocorreu! Operação não concluida!");
     }
+    if ({{ anoOcupado | tojson }}){
+      let msg = "Alerta!\n";
+      const lista = {{ anoOcupado | tojson }};
+      if (lista[0]){
+        msg += "Já há eventos para o ano selecionado, nenhum Evento copiado!\n";
+      }
+      if (lista[1]){
+        msg += "Já há atividades para o ano selecionado, nenhuma Atividade copiada!\n";
+      }
+      if (lista[2]){
+        msg += "Já há ferias para o ano selecionado, nenhuma Ferias copiada!\n";
+      }
+      if (lista[3]){
+        msg += "Já há letivos para o ano selecionado, nenhum Letivo copiado!\n";
+      }
+      alert(msg);
+    }
     
+    function divC(encapsule){
+      const localDiv = document.createElement("div");
+      localDiv.setAttribute("class", "c");
+      localDiv.appendChild(encapsule);
+      return localDiv;
+    }
+    function divGenerico(classe){
+      const localDivG = document.createElement("div");
+      localDivG.setAttribute("Class", classe);
+      return localDivG;
+    }
+    function inputMaker(tipo, idd, nome){
+      const novoInput = document.createElement("input");
+      novoInput.setAttribute("type", tipo);
+      novoInput.setAttribute("required", "true");
+      novoInput.setAttribute("id",idd);
+      novoInput.setAttribute("name", nome);
+      return novoInput;
+    }
+    function selectGenerico(nome, idd){
+      const dropDown = document.createElement("select");
+      dropDown.setAttribute("name",nome);
+      dropDown.setAttribute("id", idd);
+      return dropDown;
+    }
+    function diaMaker(){
+      const arrayDias = {{ dias | tojson }};
+      const arrayOptions = new Array(arrayDias.length);
+      const dropDown = selectGenerico("dia", "dia");
+      for (let i = 0; i<arrayDias.length; i++){
+        arrayOptions[i] = document.createElement("option");
+        arrayOptions[i].setAttribute("value", arrayDias[i]);
+        let txt = document.createTextNode(arrayDias[i]);
+        arrayOptions[i].appendChild(txt);
+        dropDown.appendChild(arrayOptions[i]);
+      }
+      return dropDown;
+    }
 
+    function mesMaker(){
+      const calendario = {{ meses | tojson }};
+      console.log(Object.keys(calendario));
+    }
+    
+    
     function generico(nome, titulo, botoes){
       const elem1 = document.createElement("div");
       elem1.setAttribute("class", "modal fade");
@@ -172,8 +241,7 @@
       
     }
     function middleDiv(nomeBotao){
-      const divs = document.createElement("div");
-      divs.setAttribute("class","b");
+      const divs = divGenerico("b")
       const dropDown = document.createElement("select");
       dropDown.setAttribute("name","campusId");
       dropDown.setAttribute("id", "campusNome0");
@@ -209,31 +277,18 @@
     
     function mudarSenha(){
       const mod = middleDiv("mudarSenha");
-      const localDiv = document.createElement("div");
-      localDiv.setAttribute("class", "c");
-      const novaSenha = document.createElement("input");
-      novaSenha.setAttribute("type", "text");
-      novaSenha.setAttribute("required", "true");
-      novaSenha.setAttribute("id","novaSenha");
-      novaSenha.setAttribute("name", "novaSenha");
-      const localDiv2 = document.createElement("div");
-      localDiv2.setAttribute("class", "c");
+      const novaSenha = inputMaker("text", "novaSenha", "novaSenha");
+      
       const txtCmp = document.createTextNode("Digite a nova senha");
       
-      mod.appendChild(localDiv2);
-      mod.appendChild(txtCmp);
-      localDiv.appendChild(novaSenha);
-      console.log(localDiv);
-      mod.appendChild(localDiv);
-      
-      
-      
+      mod.appendChild(divGenerico("d"));
+      mod.appendChild(divC(txtCmp));
+      mod.appendChild(divC(novaSenha));
 
       generico("janelaNovaSenha", "Mudar Senha",[mod]);
     }
     function viradaDeAno(){
-      const mod1 = document.createElement("div");
-      mod1.setAttribute("class","b");
+      const mod1 = divGenerico("b");
       const input1 = document.createElement("select");
       input1.setAttribute("name","viradaDeAno");
       input1.setAttribute("id","viradaDeAno");
@@ -252,18 +307,19 @@
       mod1.appendChild(input1);
       generico("janelaViradaDeAno", "Virada de Ano",[mod1]);
     }
+    
     function criarEvento(){
-      const input1 = document.createElement("input");
-      input1.setAttribute("type","submit");
-      input1.setAttribute("name","feriados");
-      input1.setAttribute("value","Criar Evento");
-      input1.setAttribute("class","btn btn-warning");
-      const input2 = document.createElement("input");
-      input2.setAttribute("value","zero");
-      input2.setAttribute("type","text");
-      input2.setAttribute("name","a0");
-      input2.setAttribute("required","True");
-      generico("janelaCriarEvento", "Criar Evento",[input1, input2]);
+      const mod2 = middleDiv("criarEvento");
+      const txtCmp = document.createTextNode("Selecione 'adm' para gerar para todos os Campus");
+      mod2.appendChild(txtCmp);
+      mod2.appendChild(divGenerico("e"));
+      mod2.appendChild(document.createTextNode("Selecione o dia:"));
+      mod2.appendChild(diaMaker());
+      const txtEvento = document.createTextNode("Escreva um comentario");
+      mod2.appendChild(divC(txtEvento));
+      mod2.appendChild(divC(inputMaker("text", "novoComentario", "novoComentario")));
+      mesMaker();
+      generico("janelaCriarEvento", "Criar Evento",[mod2]);
     }
     function excluirEvento(){
       const input1 = document.createElement("input");
