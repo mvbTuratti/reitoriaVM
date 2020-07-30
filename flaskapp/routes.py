@@ -739,7 +739,7 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 """ 
 	* Módulo de reenvio de senha, 
 	* TO-DO
-	* Complicado de setar variáveis de e-mail
+	* Complicado de setar variáveis de e-mail na máquina virtual
 	
 @app.route('/reenvio', methods=['POST', 'GET'])
 def reenvio():
@@ -1565,7 +1565,7 @@ def valores():
 				nivel_curso = city.tecnico[0]
 			elif tab == 'calem':
 				nivel_curso = city.calem[0]
-			atividades_ordenadas = sorted(nivel_curso.atividades)	
+			atividades_ordenadas = sorted([atividadesAtuais for atividadesAtuais in nivel_curso.atividades if atividadesAtuais.ano == data_atual.year])	
 			with open(paths, 'wb') as w:
 				string = r"""
 					{% extends "valores.html" %}
@@ -1654,10 +1654,13 @@ def valores():
 @app.route('/adm', methods=['POST', 'GET'])
 def adm():
 	if 'login' in session:
+		if session['login'] != "adm":
+			return redirect(url_for('controle'))
 
-		
+		data_atual = datetime.datetime.today()
+		campus = [str(c) for c in Campi.query.all()]
 		if request.method == 'POST':
-			
+			campus = [str(c) for c in Campi.query.all()]
 			dic = request.form.to_dict()
 			print(dic)
 			if "nomeDoBotao" in dic:
@@ -1669,14 +1672,40 @@ def adm():
 						db.session.commit()
 					except:
 						db.session.rollback()
-						return render_template("adm.html", campus=campi, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario)
+						return render_template("adm.html", campus=campus, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False)
+				
+				if dic["nomeDoBotao"] == "criarEvento":
+					campi = Campi.query.all()
+					if dic["campusId"] == "adm":
+						campus = [c for c in campi if c.cidade != "adm"]
+					else:
+						campus = [c for c in campi if c.cidade == dic["campusId"]]
+					for c in campus:
+						var_dic = {'id':(Eventos.query.all()[-1].id+1), 'dia':dic["dia"], 'mes':dic["mes"], 'comentario':dic["novoComentario"]}
+						modalidade = dic["modalidade"]
+						if modalidade == 'graduacao':
+							nivel_curso = c.graduacao[0]
+							var_dic.update({'graduacao_id': str(nivel_curso)})
+						elif modalidade == 'tecnico':
+							nivel_curso = c.tecnico[0]
+							var_dic.update({'tecnico_id': str(nivel_curso)})
+						elif modalidade == 'calem':
+							nivel_curso = c.calem[0]
+							var_dic.update({'calem_id': str(nivel_curso)})
+						var_dic.update({'ano':data_atual.year, 'flag': True})
+						db.session.add(Eventos(**var_dic))
+						try:
+							db.session.commit()
+						except:
+							db.session.rollback()
+							return render_template("adm.html", campus=campi, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=True, excluirGenerico=False)
+
+
 			if "viradaDeAno" in dic:
-				data_atual = datetime.datetime.today()
 				anoAtual = data_atual.year
 				
 				from flaskapp.copiadorGenerico import copiadorEventos, copiadorAtividades, copiadorFerias, copiadorLetivo
 				anoOcupado = [False,False,False,False]
-				campus = [str(c) for c in Campi.query.all()]
 				if dic["viradaDeAno"] == "proximoAno":
 					anoOcupado[0] = copiadorEventos(anoAtual, (anoAtual+1))
 					anoOcupado[1] = copiadorAtividades(anoAtual,(anoAtual+1))
@@ -1688,11 +1717,27 @@ def adm():
 					anoOcupado[1] = copiadorAtividades((anoAtual-1), anoAtual)
 					anoOcupado[2] = copiadorFerias((anoAtual-1), anoAtual)
 					anoOcupado[3] = copiadorLetivo((anoAtual-1), anoAtual)
-				print(anoOcupado)
-				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=anoOcupado, dias=[*range(1,32)], meses=calendario)
+
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=anoOcupado, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False)
+			
+			if "excluirEvento" in dic:
+				c = Campi.query.filter_by(cidade=dic["excluirEvento"])[0]
+				modalidade = dic["modalidade"]
+				if modalidade == 'graduacao':
+					nivel_curso = c.graduacao[0]
+					eventos = Eventos.query.filter_by(graduacao_id=str(nivel_curso))
+				elif modalidade == 'tecnico':
+					nivel_curso = c.tecnico[0]
+					eventos = Eventos.query.filter_by(tecnico_id=str(nivel_curso))
+				elif modalidade == 'calem':
+					nivel_curso = c.calem[0]
+					eventos = Eventos.query.filter_by(calem_id=str(nivel_curso))
+				eventosDesseAno = [str(e.comentario) for e in eventos if e.ano == data_atual.year]
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=eventosDesseAno)
+
+
 				
-				
-		campus = [str(c) for c in Campi.query.all()]
-		return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario)	
+		
+		return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False)	
 	else:
 		return redirect(url_for('home'))

@@ -449,31 +449,4 @@
 							<td data-name="del">
 								<input type="submit" class="btn btn-danger" value="x" name="del16">
 							</td>
-						</tr>
-						<tr id='addr17' data-id="17" class="hidden" align="center">
-
-							<td data-name="name">
-								<select name="name17">
-								<option value="12" selected>Dezembro</option>
-								{% for mes in data %}
-									<option value= "{{ mes }}">{{ data[mes] }}</option>
-								{% endfor %}
-								</select>
-							</td>
-							<td data-name="dia">
-								<select name="dia17">
-								<option value="31" selected>31</option>
-								{% for dia in dias %}
-									<option value= "{{ dia }}">{{ dia }}</option>
-								{% endfor %}
-								</select>
-							</td>
-							<td data-name="des">
-								<input type="hidden" name="des17" value="\textbf{Data teste}" id="des17">
-								<b>Data teste</b>
-							</td>
-						                     
-							<td data-name="del">
-								<input type="submit" class="btn btn-danger" value="x" name="del17">
-							</td>
 						</tr>{% endblock %}

@@ -70,7 +70,7 @@
             <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaCriarEvento" onclick="criarEvento()">Criar Evento</a>
           </div>
           <div class="col-md-4 offset-md-4">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaExcluirEvento" onclick="excluirEvento()">Excluir Evento</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaExcluirEvento" onclick="excluirEvento()" id="excluirEventos">Excluir Evento</a>
           </div>
         </div>
         <div class="row">
@@ -123,6 +123,15 @@
       }
       alert(msg);
     }
+    if ({{ erroEventoNovo | tojson }}){
+      alert("Erro ao criar o(s) evento(s)!")
+    }
+
+    if ({{ excluirGenerico | tojson }}){
+      alert("entrou");
+      document.getElementById("excluirEventos").click();
+
+    }
     
     function divC(encapsule){
       const localDiv = document.createElement("div");
@@ -132,7 +141,7 @@
     }
     function divGenerico(classe){
       const localDivG = document.createElement("div");
-      localDivG.setAttribute("Class", classe);
+      localDivG.setAttribute("class", classe);
       return localDivG;
     }
     function inputMaker(tipo, idd, nome){
@@ -165,10 +174,44 @@
 
     function mesMaker(){
       const calendario = {{ meses | tojson }};
-      console.log(Object.keys(calendario));
+      const dropDown2 = selectGenerico("mes", "mes");
+      for (c in calendario){
+        let membroOpt = document.createElement("option");
+        membroOpt.setAttribute("value", c);
+        let txt = document.createTextNode(calendario[c]);
+        membroOpt.appendChild(txt);
+        dropDown2.appendChild(membroOpt);
+      }
+      return dropDown2;
     }
-    
-    
+    function qualModalidade(){
+      const dropDown3 = selectGenerico("modalidade", "modalidade");
+      const modos = ["tecnico", "calem", "graduacao"];
+      for (let i = 0; i<3; i++){
+        let membro = document.createElement("option");
+        membro.setAttribute("value", modos[i]);
+        let txt = document.createTextNode(modos[i]);
+        membro.appendChild(txt);
+        dropDown3.appendChild(membro);
+      }
+      return dropDown3;
+    }
+    function selectSemAdm(){
+      const arrayCampus = {{ campus | tojson }};
+      const dropper = selectGenerico("excluirEvento", "excluirEvento");
+      for (let i = 0; i<arrayCampus.length; i++){
+        if (arrayCampus[i] == "adm"){
+          continue;
+        }
+        let flexible = document.createElement("option");
+        flexible.setAttribute("value", arrayCampus[i]);
+        let txt = document.createTextNode(arrayCampus[i]);
+        flexible.appendChild(txt);
+        dropper.appendChild(flexible);
+      }
+      return divC(dropper);
+    }
+
     function generico(nome, titulo, botoes){
       const elem1 = document.createElement("div");
       elem1.setAttribute("class", "modal fade");
@@ -242,9 +285,8 @@
     }
     function middleDiv(nomeBotao){
       const divs = divGenerico("b")
-      const dropDown = document.createElement("select");
-      dropDown.setAttribute("name","campusId");
-      dropDown.setAttribute("id", "campusNome0");
+      const dropDown = selectGenerico("campusId", "campusNome0");
+      
       const arrayCampus = {{ campus | tojson }};
       const arrayOptions = new Array(arrayCampus.length);
       
@@ -274,7 +316,12 @@
       divs.appendChild(divisorMeio);
       return divs;
     }
-    
+    function exclusaoGenerica(lista){
+      alert("isso msm que vc leu");
+      const sl = selectSemAdm();
+      console.log(lista);
+      generico("janelaExclusao", "Escolha o item para excluir", [sl]);
+    }
     function mudarSenha(){
       const mod = middleDiv("mudarSenha");
       const novaSenha = inputMaker("text", "novaSenha", "novaSenha");
@@ -313,26 +360,29 @@
       const txtCmp = document.createTextNode("Selecione 'adm' para gerar para todos os Campus");
       mod2.appendChild(txtCmp);
       mod2.appendChild(divGenerico("e"));
-      mod2.appendChild(document.createTextNode("Selecione o dia:"));
+      mod2.appendChild(document.createTextNode("dia: "));
       mod2.appendChild(diaMaker());
-      const txtEvento = document.createTextNode("Escreva um comentario");
+      mod2.appendChild(document.createTextNode(" "));
+      mod2.appendChild(document.createTextNode("mês: "));
+      mod2.appendChild(mesMaker());
+      mod2.appendChild(divGenerico("e"));
+      mod2.appendChild(document.createTextNode("Selecione a modalidade: "));
+      mod2.appendChild(qualModalidade());
+      mod2.appendChild(divGenerico("e"));
+      const txtEvento = document.createTextNode("Escreva o novo comentario");
       mod2.appendChild(divC(txtEvento));
       mod2.appendChild(divC(inputMaker("text", "novoComentario", "novoComentario")));
       mesMaker();
       generico("janelaCriarEvento", "Criar Evento",[mod2]);
     }
     function excluirEvento(){
-      const input1 = document.createElement("input");
-      input1.setAttribute("type","submit");
-      input1.setAttribute("name","feriados");
-      input1.setAttribute("value","Excluir Evento");
-      input1.setAttribute("class","btn btn-warning");
-      const input2 = document.createElement("input");
-      input2.setAttribute("value","zero");
-      input2.setAttribute("type","text");
-      input2.setAttribute("name","a0");
-      input2.setAttribute("required","True");
-      generico("janelaExcluirEvento", "Excluir Eventos",[input1, input2]);
+      const holder = divGenerico("b");
+      holder.appendChild(divC(document.createTextNode("Evento pertence a qual campus?")));
+      holder.appendChild(selectSemAdm());
+      holder.appendChild(divC(document.createTextNode("Qual a modalidade de ensino?")));
+      holder.appendChild(qualModalidade());
+      generico("janelaExcluirEvento", "Excluir Eventos",[holder]);
+    
     }
     function criarFerias(){
       const input1 = document.createElement("input");
