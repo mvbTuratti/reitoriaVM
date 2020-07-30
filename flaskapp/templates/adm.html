@@ -128,7 +128,6 @@
     }
 
     if ({{ excluirGenerico | tojson }}){
-      alert("entrou");
       document.getElementById("excluirEventos").click();
 
     }
@@ -316,11 +315,20 @@
       divs.appendChild(divisorMeio);
       return divs;
     }
-    function exclusaoGenerica(lista){
-      alert("isso msm que vc leu");
-      const sl = selectSemAdm();
-      console.log(lista);
-      generico("janelaExclusao", "Escolha o item para excluir", [sl]);
+    function exclusaoGenerica(tager, jslista, lista){
+      //const selc = selectGenerico("excluir","excluir");
+      //for (let i = 0; i < lista.length; i++){
+        //let arrayIter = document.createElement("option");
+        //arrayIter.setAttribute("value", lista[i]);
+        //let txt = document.createTextNode(lista[i]);
+      //  arrayIter.appendChild(txt);
+      //  selc.appendChild(arrayIter);
+      //}
+      //const mod= divGenerico("b");
+      //mod.appendChild(selc);
+      alert("entrou");
+      
+      generico(tager, "Excluir",[mod]);
     }
     function mudarSenha(){
       const mod = middleDiv("mudarSenha");
@@ -376,13 +384,32 @@
       generico("janelaCriarEvento", "Criar Evento",[mod2]);
     }
     function excluirEvento(){
-      const holder = divGenerico("b");
-      holder.appendChild(divC(document.createTextNode("Evento pertence a qual campus?")));
-      holder.appendChild(selectSemAdm());
-      holder.appendChild(divC(document.createTextNode("Qual a modalidade de ensino?")));
-      holder.appendChild(qualModalidade());
-      generico("janelaExcluirEvento", "Excluir Eventos",[holder]);
-    
+      let flag = true;
+      if ({{ excluirGenerico | tojson }}){
+        const listas = {{ excluirGenerico | tojson }};
+        const jslst = listas[1];
+        const listaEventos = listas[0];
+
+        if (Array.isArray(jslst) && jslst.length){
+          flag = false;
+          exclusaoGenerica("janelaExcluirEventos", jslst, listaEventos);
+        } else{
+          alert("Não há registros com esse ano");
+          flag = true;
+        }
+      }
+      if (flag===true){
+        const holder = divGenerico("b");
+        holder.appendChild(divC(document.createTextNode("Evento pertence a qual campus?")));
+        holder.appendChild(selectSemAdm());
+        holder.appendChild(divGenerico("e"));
+        holder.appendChild(divC(document.createTextNode("Qual a modalidade de ensino?")));
+        holder.appendChild(qualModalidade());
+        holder.appendChild(divGenerico("e"));
+        holder.appendChild(divC(document.createTextNode("Qual ano?")));
+        holder.appendChild(inputMaker("text","ano","ano"));
+        generico("janelaExcluirEvento", "Excluir Eventos",[holder]);
+      }
     }
     function criarFerias(){
       const input1 = document.createElement("input");

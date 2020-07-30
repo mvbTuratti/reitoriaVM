@@ -1721,8 +1721,10 @@ def adm():
 				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=anoOcupado, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False)
 			
 			if "excluirEvento" in dic:
+				listas = []
 				c = Campi.query.filter_by(cidade=dic["excluirEvento"])[0]
 				modalidade = dic["modalidade"]
+
 				if modalidade == 'graduacao':
 					nivel_curso = c.graduacao[0]
 					eventos = Eventos.query.filter_by(graduacao_id=str(nivel_curso))
@@ -1732,8 +1734,17 @@ def adm():
 				elif modalidade == 'calem':
 					nivel_curso = c.calem[0]
 					eventos = Eventos.query.filter_by(calem_id=str(nivel_curso))
-				eventosDesseAno = [str(e.comentario) for e in eventos if e.ano == data_atual.year]
-				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=eventosDesseAno)
+				try:
+					anoTarget = int(dic["ano"])
+					eventosDesseAno = [e.comentario for e in eventos if e.ano == anoTarget]
+					listas.append(eventosDesseAno)
+					listas.append([anoTarget, modalidade, dic["excluirEvento"]])
+				except:
+					listas.append([])
+					listas.append([])
+
+				
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=listas)
 
 
 				
