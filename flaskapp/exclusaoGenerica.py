@@ -21,3 +21,14 @@ def exclusaoEventos(ano, modalidade, campus, conteudo):
     except:
         db.session.rollback()
 
+def exclusaoFerias(ano, campus, conteudo):
+    c = Campi.query.filter_by(cidade=campus)[0]
+    ferias = c.ferias
+    feriasAno = [f for f in ferias if f.ano == int(ano) and 
+                                        f.comentario == conteudo]
+    
+    try:
+        db.session.delete(feriasAno[0])
+        db.session.commit()
+    except:
+        db.session.rollback()    

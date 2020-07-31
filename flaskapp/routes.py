@@ -1790,15 +1790,16 @@ def adm():
 				except:
 					listas.append([])
 					listas.append([])
+				print(listas)
 				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=listas)	
 			if "modelExclusao" in dic:
-				from flaskapp.exclusaoGenerica import exclusaoEventos
+				from flaskapp.exclusaoGenerica import exclusaoEventos, exclusaoFerias
 				
 				if dic["modelExclusao"] == "excluirEventos":
 					exclusaoEventos(dic["ano"], dic["modalidade"], dic["campus"], dic["excluirMarcadores"])
 				
-				elif dic["modelExclusao"] == "excluirFerias":
-					print("tamo ae")
+				if dic["modelExclusao"] == "excluirFerias":
+					exclusaoFerias(dic["ano"], dic["campus"], dic["excluirMarcadores"])
 				
 		
 		return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False)	

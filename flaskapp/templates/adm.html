@@ -373,6 +373,34 @@
       
       generico("janelaExcluirEvento","Excluir",[mod]);
     }
+    function exclusaoGenerica2(tager, jslista, lista){
+      const selc = selectGenerico("excluirMarcadores","excluirItens");
+      selc.setAttribute("class", "b");
+      for (let i = 0; i < lista.length; i++){
+        let arrayIter = document.createElement("option");
+        arrayIter.setAttribute("value", lista[i]);
+        let txt = document.createTextNode(lista[i]);
+        arrayIter.appendChild(txt);
+        selc.appendChild(arrayIter);
+      }
+
+      const mod= divC(document.createTextNode("Escolha pelo conteúdo o que deve ser excluído:"));
+      
+      const hide0 = inputMaker("hidden","modelExclusao","modelExclusao");
+      hide0.setAttribute("value", `excluir${tager}`);
+      mod.appendChild(hide0);
+      const hideInfo = inputMaker("hidden","ano","ano");
+      hideInfo.setAttribute("value", jslista[0]);
+      mod.appendChild(hideInfo);
+      const hide2 = inputMaker("hidden","campus","campus");
+      hide2.setAttribute("value", jslista[1]);
+      mod.appendChild(hide2);
+
+      mod.appendChild(divC(selc));
+      
+      
+      generico(`janelaExcluir${tager}`,`Excluir ${tager}`,[mod]);
+    }
     function mudarSenha(){
       const mod = middleDiv("mudarSenha");
       const novaSenha = inputMaker("text", "novaSenha", "novaSenha");
@@ -475,10 +503,9 @@
         const listas = {{ excluirFerias | tojson }};
         const jslst = listas[1];
         const listaEventos = listas[0];
-
         if (Array.isArray(jslst) && jslst.length){
           flag = false;
-          exclusaoGenerica("excluirFerias", jslst, listaEventos);
+          exclusaoGenerica2("Ferias", jslst, listaEventos);
         } else{
           alert("Não há registros com esse ano");
           flag = true;
