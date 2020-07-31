@@ -1672,15 +1672,15 @@ def adm():
 						db.session.commit()
 					except:
 						db.session.rollback()
-						return render_template("adm.html", campus=campus, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False)
+						return render_template("adm.html", campus=campus, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False)
 				
 				if dic["nomeDoBotao"] == "criarEvento":
-					campi = Campi.query.all()
+					campusQuery = Campi.query.all()
 					if dic["campusId"] == "adm":
-						campus = [c for c in campi if c.cidade != "adm"]
+						campi = [c for c in campusQuery if c.cidade != "adm"]
 					else:
-						campus = [c for c in campi if c.cidade == dic["campusId"]]
-					for c in campus:
+						campi = [c for c in campusQuery if c.cidade == dic["campusId"]]
+					for c in campi:
 						var_dic = {'id':(Eventos.query.all()[-1].id+1), 'dia':dic["dia"], 'mes':dic["mes"], 'comentario':dic["novoComentario"]}
 						modalidade = dic["modalidade"]
 						if modalidade == 'graduacao':
@@ -1693,14 +1693,45 @@ def adm():
 							nivel_curso = c.calem[0]
 							var_dic.update({'calem_id': str(nivel_curso)})
 						var_dic.update({'ano':data_atual.year, 'flag': True})
-						db.session.add(Eventos(**var_dic))
+						
 						try:
+							db.session.add(Eventos(**var_dic))
 							db.session.commit()
 						except:
 							db.session.rollback()
-							return render_template("adm.html", campus=campi, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=True, excluirGenerico=False)
-
-
+							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Eventos", excluirGenerico=False, excluirFerias=False)
+				if dic["nomeDoBotao"] == "criarFerias":
+					campi = Campi.query.all()
+					if dic["campusId"] == "adm":
+						campi = [c for c in campi if c.cidade != "adm"]
+					else:
+						campi = [c for c in campi if c.cidade == dic["campusId"]]
+					for c in campi:
+						var_dic = {'id':(Ferias.query.all()[-1].id+1), 'dia':dic["dia"], 'mes':dic["mes"], 'comentario':dic["novoComentario"], 'ano':data_atual.year, 'flag': True}
+						
+						try:
+							db.session.add(Ferias(**var_dic))
+							db.session.commit()
+						except:
+							db.session.rollback()
+							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Ferias", excluirGenerico=False, excluirFerias=False)
+				if dic["nomeDoBotao"] == "criarAtividades":
+					campi = Campi.query.all()
+					if dic["campusId"] == "adm":
+						campi = [c for c in campi if c.cidade != "adm"]
+					else:
+						campi = [c for c in campi if c.cidade == dic["campusId"]]
+					for c in campi:
+						var_dic = {'id':(Atividades.query.all()[-1].id+1), 'dia_inicio':dic["dia"], 'dia_final':dic["diafinal"], 'mes':dic["mes"], 'comentario':dic["novoComentario"], 'ano':data_atual.year, 'flag': True}
+						
+						try:
+							
+							db.session.add(Atividades(**var_dic))
+							db.session.commit()
+						except:
+							db.session.rollback()
+							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Atividades", excluirGenerico=False, excluirFerias=False)
+			
 			if "viradaDeAno" in dic:
 				anoAtual = data_atual.year
 				
@@ -1718,7 +1749,7 @@ def adm():
 					anoOcupado[2] = copiadorFerias((anoAtual-1), anoAtual)
 					anoOcupado[3] = copiadorLetivo((anoAtual-1), anoAtual)
 
-				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=anoOcupado, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False)
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=anoOcupado, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False)
 			
 			if "excluirEvento" in dic:
 				listas = []
@@ -1737,18 +1768,39 @@ def adm():
 				try:
 					anoTarget = int(dic["ano"])
 					eventosDesseAno = [e.comentario for e in eventos if e.ano == anoTarget]
+					if not eventosDesseAno:
+						raise
 					listas.append(eventosDesseAno)
 					listas.append([anoTarget, modalidade, dic["excluirEvento"]])
 				except:
 					listas.append([])
 					listas.append([])
-
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=listas, excluirFerias=False)
+			
+			if "excluirFerias" in dic:
+				listas = []
+				c = Campi.query.filter_by(cidade=dic["excluirFerias"])[0]
+				try:
+					anoTarget = int(dic["ano"])
+					feriasDesseAno = [f.comentario for f in Ferias.query.filter_by(cidade_id=str(c)) if f.ano == anoTarget]
+					if not feriasDesseAno:
+						raise
+					listas.append(feriasDesseAno)
+					listas.append([anoTarget, dic["excluirFerias"]])
+				except:
+					listas.append([])
+					listas.append([])
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=listas)	
+			if "modelExclusao" in dic:
+				from flaskapp.exclusaoGenerica import exclusaoEventos
 				
-				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=listas)
-
-
+				if dic["modelExclusao"] == "excluirEventos":
+					exclusaoEventos(dic["ano"], dic["modalidade"], dic["campus"], dic["excluirMarcadores"])
+				
+				elif dic["modelExclusao"] == "excluirFerias":
+					print("tamo ae")
 				
 		
-		return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False)	
+		return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False)	
 	else:
 		return redirect(url_for('home'))
