@@ -32,3 +32,15 @@ def exclusaoFerias(ano, campus, conteudo):
         db.session.commit()
     except:
         db.session.rollback()    
+
+def exclusaoAtividades(ano, campus, conteudo):
+    c = Campi.query.filter_by(cidade=campus)[0]
+    atividades = c.atividades
+    atividadesAno = [ativ for ativ in atividades if ativ.ano == int(ano) and 
+                                        ativ.comentario == conteudo]
+    
+    try:
+        db.session.delete(atividadesAno[0])
+        db.session.commit()
+    except:
+        db.session.rollback()    

@@ -92,7 +92,7 @@
             <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaCriarAtividades" onclick="criarAtividades()">Criar Atividades</a>
           </div>
           <div class="col-md-4 offset-md-4">
-            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaExcluirAtividades" onclick="excluirAtividades()">Excluir Atividades</a>
+            <a href="#" class="btn btn-dark custom" role="button" data-toggle="modal" data-target="#janelaExcluirAtividades" onclick="excluirAtividades()" id="excluirAtividades">Excluir Atividades</a>
           </div>
         </div>
         
@@ -141,6 +141,9 @@
     if ({{ excluirFerias | tojson }}){
       document.getElementById("excluirFerias").click();
 
+    }
+    if ( {{ excluirAtividades | tojson }} ){
+      document.getElementById("excluirAtividades").click();
     }
     
     function divC(encapsule){
@@ -555,17 +558,42 @@
       generico("janelaCriarAtividades", "Criar Atividades",[mod2]);
     }
     function excluirAtividades(){
-      const input1 = document.createElement("input");
-      input1.setAttribute("type","submit");
-      input1.setAttribute("name","feriados");
-      input1.setAttribute("value","Excluir Atividades");
-      input1.setAttribute("class","btn btn-warning");
-      const input2 = document.createElement("input");
-      input2.setAttribute("value","zero");
-      input2.setAttribute("type","text");
-      input2.setAttribute("name","a0");
-      input2.setAttribute("required","True");
-      generico("janelaExcluirAtividades", "Excluir Atividades",[input1, input2]);
+      let flag = true;
+      if ({{ excluirAtividades | tojson }}){
+        const listas = {{ excluirAtividades | tojson }};
+        const jslst = listas[1];
+        const listaEventos = listas[0];
+        if (Array.isArray(jslst) && jslst.length){
+          flag = false;
+          exclusaoGenerica2("Atividades", jslst, listaEventos);
+        } else{
+          alert("Não há registros com esse ano");
+          flag = true;
+        }
+      }
+      if (flag===true){
+        const holder = divGenerico("b");
+        holder.appendChild(divC(document.createTextNode("Atividade pertence a qual campus?")));
+        
+        const arrayCampus = {{ campus | tojson }};
+        const dropper = selectGenerico("excluirAtividades", "excluirAtividades");
+        for (let i = 0; i<arrayCampus.length; i++){
+          if (arrayCampus[i] == "adm"){
+            continue;
+          }
+          let flexible = document.createElement("option");
+          flexible.setAttribute("value", arrayCampus[i]);
+          let txt = document.createTextNode(arrayCampus[i]);
+          flexible.appendChild(txt);
+          dropper.appendChild(flexible);
+        }
+        
+        holder.appendChild(divC(dropper));
+        holder.appendChild(divGenerico("e"));
+        holder.appendChild(divC(document.createTextNode("Qual ano?")));
+        holder.appendChild(inputMaker("text","ano","ano"));
+        generico("janelaExcluirAtividades", "Excluir Atividades",[holder]);
+      }
     }
 
   </script>

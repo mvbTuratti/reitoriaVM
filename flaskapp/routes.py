@@ -1672,7 +1672,7 @@ def adm():
 						db.session.commit()
 					except:
 						db.session.rollback()
-						return render_template("adm.html", campus=campus, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False)
+						return render_template("adm.html", campus=campus, semSenha=True, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False, excluirAtividades=False)
 				
 				if dic["nomeDoBotao"] == "criarEvento":
 					campusQuery = Campi.query.all()
@@ -1699,7 +1699,7 @@ def adm():
 							db.session.commit()
 						except:
 							db.session.rollback()
-							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Eventos", excluirGenerico=False, excluirFerias=False)
+							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Eventos", excluirGenerico=False, excluirFerias=False, excluirAtividades=False)
 				if dic["nomeDoBotao"] == "criarFerias":
 					campi = Campi.query.all()
 					if dic["campusId"] == "adm":
@@ -1707,14 +1707,13 @@ def adm():
 					else:
 						campi = [c for c in campi if c.cidade == dic["campusId"]]
 					for c in campi:
-						var_dic = {'id':(Ferias.query.all()[-1].id+1), 'dia':dic["dia"], 'mes':dic["mes"], 'comentario':dic["novoComentario"], 'ano':data_atual.year, 'flag': True}
-						
+						var_dic = {'id':(Ferias.query.all()[-1].id+1), 'dia':dic["dia"], 'mes':dic["mes"], 'comentario':dic["novoComentario"],'cidade_id':str(c), 'ano':data_atual.year, 'flag': True}
 						try:
 							db.session.add(Ferias(**var_dic))
 							db.session.commit()
 						except:
 							db.session.rollback()
-							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Ferias", excluirGenerico=False, excluirFerias=False)
+							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Ferias", excluirGenerico=False, excluirFerias=False, excluirAtividades=False)
 				if dic["nomeDoBotao"] == "criarAtividades":
 					campi = Campi.query.all()
 					if dic["campusId"] == "adm":
@@ -1722,7 +1721,7 @@ def adm():
 					else:
 						campi = [c for c in campi if c.cidade == dic["campusId"]]
 					for c in campi:
-						var_dic = {'id':(Atividades.query.all()[-1].id+1), 'dia_inicio':dic["dia"], 'dia_final':dic["diafinal"], 'mes':dic["mes"], 'comentario':dic["novoComentario"], 'ano':data_atual.year, 'flag': True}
+						var_dic = {'id':(Atividades.query.all()[-1].id+1), 'dia_inicio':dic["dia"], 'dia_final':dic["diafinal"], 'mes':dic["mes"], 'comentario':dic["novoComentario"], 'cidade_id':str(c), 'ano':data_atual.year, 'flag': True}
 						
 						try:
 							
@@ -1730,7 +1729,7 @@ def adm():
 							db.session.commit()
 						except:
 							db.session.rollback()
-							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Atividades", excluirGenerico=False, excluirFerias=False)
+							return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo="Atividades", excluirGenerico=False, excluirFerias=False, excluirAtividades=False)
 			
 			if "viradaDeAno" in dic:
 				anoAtual = data_atual.year
@@ -1749,7 +1748,7 @@ def adm():
 					anoOcupado[2] = copiadorFerias((anoAtual-1), anoAtual)
 					anoOcupado[3] = copiadorLetivo((anoAtual-1), anoAtual)
 
-				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=anoOcupado, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False)
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=anoOcupado, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False, excluirAtividades=False)
 			
 			if "excluirEvento" in dic:
 				listas = []
@@ -1775,14 +1774,15 @@ def adm():
 				except:
 					listas.append([])
 					listas.append([])
-				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=listas, excluirFerias=False)
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=listas, excluirFerias=False, excluirAtividades=False)
 			
 			if "excluirFerias" in dic:
 				listas = []
 				c = Campi.query.filter_by(cidade=dic["excluirFerias"])[0]
+				fer = c.ferias
 				try:
 					anoTarget = int(dic["ano"])
-					feriasDesseAno = [f.comentario for f in Ferias.query.filter_by(cidade_id=str(c)) if f.ano == anoTarget]
+					feriasDesseAno = [f.comentario for f in fer if f.ano == anoTarget]
 					if not feriasDesseAno:
 						raise
 					listas.append(feriasDesseAno)
@@ -1790,18 +1790,36 @@ def adm():
 				except:
 					listas.append([])
 					listas.append([])
-				print(listas)
-				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=listas)	
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=listas, excluirAtividades=False)	
+
+			if "excluirAtividades" in dic:
+				listas = []
+				c = Campi.query.filter_by(cidade=dic["excluirAtividades"])[0]
+				atividadesTodas = c.atividades
+				try:
+					anoTarget = int(dic["ano"])
+					atividadesDesseAno = [ativ.comentario for ativ in atividadesTodas if ativ.ano == anoTarget]
+					if not atividadesDesseAno:
+						raise
+					listas.append(atividadesDesseAno)
+					listas.append([anoTarget, dic["excluirAtividades"]])
+				except:
+					listas.append([])
+					listas.append([])
+				return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False, excluirAtividades=listas)	
+			
 			if "modelExclusao" in dic:
-				from flaskapp.exclusaoGenerica import exclusaoEventos, exclusaoFerias
+				from flaskapp.exclusaoGenerica import exclusaoEventos, exclusaoFerias, exclusaoAtividades
 				
 				if dic["modelExclusao"] == "excluirEventos":
 					exclusaoEventos(dic["ano"], dic["modalidade"], dic["campus"], dic["excluirMarcadores"])
 				
 				if dic["modelExclusao"] == "excluirFerias":
 					exclusaoFerias(dic["ano"], dic["campus"], dic["excluirMarcadores"])
-				
+
+				if dic["modelExclusao"] == "excluirAtividades":
+					exclusaoAtividades(dic["ano"], dic["campus"], dic["excluirMarcadores"])
 		
-		return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False)	
+		return render_template("adm.html", campus=campus, semSenha=False, anoOcupado=False, dias=[*range(1,32)], meses=calendario, erroEventoNovo=False, excluirGenerico=False, excluirFerias=False, excluirAtividades=False)	
 	else:
 		return redirect(url_for('home'))
