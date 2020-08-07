@@ -266,7 +266,8 @@ def download():
 						else:
 							corte_vertical2 = 10
 						#loop que itera pelos eventos da tabela tecnico, .dias é a chave estrangeira que acessa a tabela Eventos
-						for letivos in tec.dias:
+						tec_filtrado = [tc for tc in tec.dias if tc.ano == ano]
+						for letivos in tec_filtrado:
 							#Como não vai ter eventos em janeiro, já pula.
 							if letivos.mes > 1:
 								#flags para separar cortes de coluna e de página, esses valores representam os meses, definidos anteriormente
@@ -375,8 +376,8 @@ def download():
 							corte_vertical2 = 11
 						else:
 							corte_vertical2 = 10
-						
-						for letivos in tec.dias:
+						tec_filtrado = [tc for tc in tec.dias if tc.ano == ano]
+						for letivos in tec_filtrado:
 							if letivos.mes > 1:
 								
 
@@ -478,7 +479,8 @@ def download():
 						corte_vertical2 = 11
 					else:
 						corte_vertical2 = 10
-					for letivos in grad.dias:
+					grad_filtrado = [gd for gd in grad.dias if gd.ano == ano]
+					for letivos in grad_filtrado:
 						#if que evita o mês de Janeiro ser computado.
 						if letivos.mes > 1:
 							#condicionais que definem corte de páginas e cortes verticais
@@ -577,8 +579,8 @@ Os cronogramas de matrícula serão divulgados em instrução própria e publica
 							corte_vertical2 = 11
 						else:
 							corte_vertical2 = 10
-
-						for letivos in cal.dias:
+						calem_filtrado = [c for c in cal.dias if c.ano == ano]
+						for letivos in calem_filtrado:
 							if letivos.mes > 1:
 								
 
