@@ -8,6 +8,7 @@ app.config['SECRET_KEY'] = 'e59d86e807f40bafb20cca686aebdd04'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 2
 app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.jinja_env.auto_reload = True
 
 #criação da variável que acessa o banco de dados
 db = SQLAlchemy(app)
